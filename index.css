@@ -1,11 +1,3 @@
-body {
-  width: 100vw;
-  height: 95vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .loginsection {
   display: flex;
   flex-direction: column;
