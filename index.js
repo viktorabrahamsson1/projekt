@@ -7,3 +7,7 @@ const login = function () {
     window.location.href = "main.html";
   }
 };
+
+const signout = function () {
+  window.location.href = "index.html";
+};
