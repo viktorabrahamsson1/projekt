@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <script src="../js/index.js"></script>
+  </head>
+  <body onload="asideButtons()">
+    <header>
+      <p>Incident report portal</p>
+      <div>
+        <button>Account</button>
+        <button onclick="signout()">Sign out</button>
+      </div>
+    </header>
+
+    <aside>
+      <div class="aside-button-container" id="reporter">
+        <p>Reporter</p>
+        <button>Report incident</button>
+        <button>My incidents</button>
+        <button>Add evidence</button>
+      </div>
+      <div class="aside-button-container" id="responder">
+        <p>Responder</p>
+        <button>All indcidents</button>
+        <button>Update status</button>
+        <button>Add comment</button>
+      </div>
+      <div class="aside-button-container" id="admin">
+        <p>Admin</p>
+        <button>View incidents</button>
+        <button>All users</button>
+        <button>Analytics</button>
+        <button>Visit logs</button>
+      </div>
+    </aside>
+
+    <main></main>
+  </body>
+</html>

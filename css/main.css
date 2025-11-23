@@ -84,7 +84,14 @@ aside {
   gap: 20px;
 }
 
-aside > button {
+.aside-button-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aside-button-container > button {
   background-color: #eecc85;
 
   padding: 10px 30px 10px 30px;
@@ -95,8 +102,16 @@ aside > button {
   transition: 0.1s;
 }
 
-aside > button:first-of-type {
-  margin-top: 20px;
+.aside-button-container > button:hover {
+  background-color: #e6b863;
+  cursor: pointer;
+}
+
+.aside-button-container > p {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /*
