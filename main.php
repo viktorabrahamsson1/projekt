@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>main</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="./js/index.js" type="module"></script>
+    <script src="./js/index.js" ></script>
   </head>
   <body onload="asideButtons()">
     <header>
-      <p>Incident report portal</p>
+      <p>Incident report portal</p>   
       <div>
         <button>Account</button>
         <button onclick="signout()">Sign out</button>

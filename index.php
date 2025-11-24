@@ -11,10 +11,10 @@
 
   <body>
     <section class="loginsection" id="login-section">
-      <p>Sign in</p>
-      <input type="text" placeholder="Username" id="username" />
-      <input type="password" placeholder="Password" id="password" />
-      <button onclick="login()">Login</button>
+        <p>Sign in</p>
+        <input type="text" placeholder="Username" id="username" name="username"/>
+        <input type="password" placeholder="Password" id="password" name="password"/>
+        <button onclick="login()">Login</button>
       <button onclick="window.location.href='register.php'">
          Don't have an account? Register here! 
       </button>
