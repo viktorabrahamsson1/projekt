@@ -6,7 +6,7 @@ const login = function () {
 
   if (username == "admin" && password == "123") {
     console.log("logged in");
-    window.location.href = "main.html";
+    window.location.href = "main.php";
   }
 };
 

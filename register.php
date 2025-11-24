@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/register.css" />
   </head>
   <body>
     <section class="loginsection" id="login-section">
@@ -22,8 +22,8 @@
         <option value="admin">Admin</option>
       </select>
       <button>Create account</button>
-      <button>
-        <a href="index.html"> Already have an account? Sign in here </a>
+      <button onclick="window.location.href='index.php'">
+         Already have an account? Sign in here 
       </button>
     </section>
   </body>
