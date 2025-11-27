@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/register.css" />
-  </head>
-  <body>
-    <section class="loginsection" id="login-section">
-      <p>Sign Up</p>
-      <input type="text" placeholder="First Name" />
-      <input type="text" placeholder="Last Name" />
-      <input type="text" placeholder="Username" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <select name="role" id="roles">
-        <option value="responder">Responder</option>
-        <option value="reporter">Reporter</option>
-        <option value="admin">Admin</option>
-      </select>
-      <button>Create account</button>
-      <button onclick="window.location.href='index.php'">
-         Already have an account? Sign in here 
-      </button>
-    </section>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./css/register.css" />
+</head>
+
+<body>
+  <section class="loginsection" id="login-section">
+    <p>Sign Up</p>
+    <input type="text" placeholder="First Name" />
+    <input type="text" placeholder="Last Name" />
+    <input type="text" placeholder="Username" />
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <select name="role" id="roles">
+      <option value="responder">Responder</option>
+      <option value="reporter">Reporter</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button>Create account</button>
+    <button onclick="window.location.href='index.php'">
+      Already have an account? Sign in here
+    </button>
+  </section>
+</body>
+
 </html>
