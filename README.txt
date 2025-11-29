@@ -11,6 +11,7 @@ Filer:
 - register.php: Sida där en ny användare kan registrera sig.
 - main.php: Huvudsida som endast är tillgänglig för inloggade användare.
 - logout.php: Loggar ut användaren och avslutar sessionen.
+- -gitignore: Gör så att för varje "git push" så ignorerar git vissa filer som aldrig uppdateras. 
 
 includes:
 - Här läggs filer med funktionalitet som kan nyttjas globalt i projektet. 
