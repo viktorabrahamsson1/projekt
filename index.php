@@ -20,9 +20,6 @@
       <input type="password" placeholder="Password" id="password" name="password" />
       <button onclick="login()">Log in</button>
     </form>
-    <button onclick="window.location.href='register.php'">
-      Don't have an account? Register here!
-    </button>
   </section>
 </body>
 
