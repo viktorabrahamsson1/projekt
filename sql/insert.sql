@@ -78,12 +78,11 @@ INSERT INTO user_visit_log VALUES
 -- SEVERITY - INCIDENT TYPES - ASSETS
 -- ===============================
 
-INSERT INTO severity (severity) VALUES 
-('Pending'), 
+INSERT INTO severity (severity) VALUES  
+('Low'),
 ('Medium'), 
 ('High'),
-('Critical'),
-('Info');
+('Critical');
 
 INSERT INTO incident_type (incident_type) VALUES 
 ('Phishing'),
@@ -111,7 +110,7 @@ VALUES
 (3, 2, 'Major DDoS attack detected', NOW()),
 (1, 3, 'Malware detected on workstation', NOW()),
 (4, 4, 'SQL injection attempt detected', NOW()),
-(5, 5, 'High number of failed login attempts', NOW()),
+(2, 5, 'High number of failed login attempts', NOW()),
 (3, 6, 'Privilege escalation attempt logged', NOW());
 
 -- ===============================
@@ -122,11 +121,11 @@ INSERT INTO incident_asset (asset_id, incident_id)
 VALUES 
 (1, 1),
 (2, 2),
-(3, 2),
+(6, 2),
 (4, 3),
-(5, 4),
-(6, 5),
-(1, 6),
+(2, 5),
+(6, 3),
+(5, 6),
 (3, 6);
 
 -- ===============================
