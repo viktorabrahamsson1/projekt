@@ -25,3 +25,13 @@ const asideButtons = function () {
     }
   });
 };
+
+const selectMainContent = (id) => {
+  document.querySelectorAll("mainContent").forEach((section) => {
+    if (section.id !== id) {
+      section.style.display = "none";
+    } else {
+      section.style.display = "block";
+    }
+  });
+};

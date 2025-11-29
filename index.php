@@ -15,9 +15,11 @@
 <body>
   <section class="loginsection" id="login-section">
     <p>Sign in</p>
-    <input type="text" placeholder="Username" id="username" name="username" />
-    <input type="password" placeholder="Password" id="password" name="password" />
-    <button onclick="login()">Log in</button>
+    <form action="auth/login.php" method="POST">
+      <input type="text" placeholder="Username" id="username" name="username" />
+      <input type="password" placeholder="Password" id="password" name="password" />
+      <button onclick="login()">Log in</button>
+    </form>
     <button onclick="window.location.href='register.php'">
       Don't have an account? Register here!
     </button>

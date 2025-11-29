@@ -1,3 +1,11 @@
+:root {
+  --primary-bg-color: #8f7fee;
+  --primary-bt-color: #eecc85;
+  --primary-bt-hover-color: #e6b863;
+  --primary-bt-delete-color: #e02a2a;
+  --primary-bt-delete-hover-color: #b32222;
+}
+
 body {
   display: grid;
   grid-template-columns: 15rem auto;
@@ -85,10 +93,11 @@ aside {
 }
 
 .aside-button-container {
+  width: 80%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 32px;
 }
 
 .aside-button-container > button {
@@ -97,7 +106,10 @@ aside {
   padding: 10px 30px 10px 30px;
   border: none;
   border-radius: 8px;
-  color: white;
+  color: black;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
 
   transition: 0.1s;
 }
@@ -111,7 +123,7 @@ aside {
   margin-top: 10px;
   margin-bottom: 0;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 32px;
 }
 
 /*
@@ -123,4 +135,91 @@ MAIN
 main {
   grid-column: 2;
   grid-row: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allUsers {
+  width: 340px;
+  height: 500px;
+  background-color: var(--primary-bg-color);
+  padding: 24px 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 4px;
+}
+
+.allUsers > p {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  font-size: 32px;
+  padding: 12px 0px;
+
+  align-self: center;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.userList {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: scroll;
+
+  gap: 16px;
+}
+
+.userList > li {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.userList > li > p {
+  margin-left: 12px;
+}
+
+.userList > li > div > button {
+  padding: 12px;
+  border-radius: 4px;
+
+  transition: 0.1s;
+}
+
+.userList > li > div > button:hover {
+  cursor: pointer;
+}
+
+.userList > li > div > button:first-of-type {
+  border: none;
+  background-color: var(--primary-bt-color);
+}
+
+.userList > li > div > button:first-of-type:hover {
+  background-color: var(--primary-bt-hover-color);
+}
+
+.userList > li > div > button:last-of-type {
+  border: none;
+  margin-left: 6px;
+  margin-right: 12px;
+  background-color: var(--primary-bt-delete-color);
+}
+
+.userList > li > div > button:last-of-type:hover {
+  background-color: var(--primary-bt-delete-hover-color);
 }

@@ -1,3 +1,11 @@
+<?php require_once "includes/session.php";
+if (!isset($_SESSION["logged_in"])) {
+  header("Location: index.php");
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +19,10 @@
 
 <body onload="asideButtons()">
   <header>
-    <p>Incident report portal</p>
+    <p>Incident report portal <?php echo $_SESSION["username"]; ?></p>
     <div>
       <button>Account</button>
-      <button onclick="signout()">Sign out</button>
+      <button onclick="window.location.href='logout.php'">Sign out</button>
     </div>
   </header>
 
@@ -25,7 +33,7 @@
       <button>My incidents</button>
       <button>Add evidence</button>
     </div>
-    <div class="aside-button-container" id="responder">
+    <div class=" aside-button-container" id="responder">
       <p>Responder</p>
       <button>All indcidents</button>
       <button>Update status</button>
@@ -40,7 +48,55 @@
     </div>
   </aside>
 
-  <main></main>
+  <main>
+    <section class="allUsers mainContent" id="allUsers">
+      <p>Users</p>
+      <ul class="userList">
+        <li>
+          <p>bob</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+        <li>
+          <p>Emma</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+        <li>
+          <p>Jesper</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+        <li>
+          <p>ben</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+        <li>
+          <p>bobo</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+        <li>
+          <p>bobo</p>
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
 </body>
 
 </html>

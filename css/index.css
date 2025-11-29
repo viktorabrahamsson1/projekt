@@ -18,8 +18,15 @@
   margin: 0 0 1rem 0;
 }
 
+.loginsection > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 /* Inputs */
-.loginsection > input {
+.loginsection > form > input {
   width: 250px;
   padding: 10px;
   border: 2px solid black;
@@ -30,7 +37,7 @@
 }
 
 /* Login-knappen */
-.loginsection > button:first-of-type {
+.loginsection > form > button {
   width: 150px;
   padding: 10px;
   background-color: #6b2eff;
@@ -41,7 +48,7 @@
   cursor: pointer;
 }
 
-.loginsection > button:first-of-type:hover {
+.loginsection > form > button:hover {
   background-color: #5a25d8;
 }
 
