@@ -6,6 +6,16 @@ $users = [
     "role" => "admin"
   ],
   [
+    "username" => "responder",
+    "password" => "123",
+    "role" => "responder"
+  ],
+  [
+    "username" => "reporter",
+    "password" => "123",
+    "role" => "reporter"
+  ],
+  [
     "username" => "viktor",
     "password" => "123",
     "role" => "responder"

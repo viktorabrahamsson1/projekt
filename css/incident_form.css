@@ -1,58 +1,60 @@
 .report_container {
-    width: 500px;
-    height: 500px;
-    background-color: #5a25d8;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 500px;
+  height: 500px;
+  background-color: var(--primary-bg-color);
+  border-radius: 4px;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form_container {
-    width: 90%;
-    height: 70%;
+  width: 90%;
+  height: 70%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    color: white;
+.form_container > form {
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
-form > label{
-    margin-top: 5px;
+.form_container > form > label {
+  margin-top: 5px;
 }
 
-form > select {
-    padding: 10px;
-    border: 1px black;
-    border-radius: 5px;
+.form_container > form > select {
+  padding: 10px;
+  border: 1px black;
+  border-radius: 5px;
 }
 
-form > input {
-    padding: 10px;
-    border: 1px black;
-    border-radius: 5px;
+.form_container > form > input {
+  padding: 10px;
+  border: 1px black;
+  border-radius: 5px;
 }
 
 textarea {
-    border: 1px black;
-    border-radius: 5px;
+  border: 1px black;
+  border-radius: 5px;
 }
 
 h1 {
-    color: white;
+  color: white;
 }
 
-button {
-    margin-top: 5px;
-    border: 1px;
-    border-radius: 5px;
-    height: 30px;
+form > button {
+  background-color: var(--primary-bt-color);
+  margin-top: 5px;
+  border: 1px;
+  border-radius: 5px;
+  height: 30px;
 }
 
-button:hover {
-    background-color: #09d824;
-    cursor: pointer;
+form > button:hover {
+  background-color: var(--primary-bt-hover-color);
+  cursor: pointer;
 }

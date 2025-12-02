@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incident Report</title>
-    <link rel="stylesheet" href="/css/incident_form.css" />
-    <link rel="stylesheet" href="/css/global.css" />
-</head>
-
-<body>
-    <div class="report_container">
+<?php
+$content = <<<HTML
+        <div class="report_container">
         <h1>Incident Report Form</h1>
         <div class="form_container">
             <form>
@@ -49,12 +39,14 @@
                 <input type="file" id="image" name="image" accept="image/*" required>
 
                 <label for="description">Description</label>
-                <textarea name="description" id="description" rows="5" cols="40" placeholder="Write your description here"></textarea>
+                <textarea name="description" id="description" rows="5" cols="40"
+                    placeholder="Write your description here"></textarea>
 
                 <button type="submit">Submit</button>
             </form>
         </div>
     </div>
-</body>
+HTML;
 
-</html>
+require_once "../../includes/layout.php";
+?>

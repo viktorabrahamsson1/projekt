@@ -1,8 +1,4 @@
-<?php
-require_once "session.php";
-
-
-?>
+<?php require_once "session.php" ?>
 
 
 <!DOCTYPE html>
@@ -11,7 +7,8 @@ require_once "session.php";
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/incident_form.css">
   <title>main</title>
   <script src="../js/index.js"></script>
 
@@ -19,8 +16,7 @@ require_once "session.php";
 
 <body>
   <header>
-    <p>Incident report portal
-      <?php echo $_SESSION["username"] ?>
+    <p>Incident Report Portal
     </p>
     <div>
       <button>Account</button>
@@ -35,7 +31,7 @@ require_once "session.php";
       $buttons .= <<<HTML
         <div class="aside-button-container" id="reporter">
           <p>Reporter</p>
-          <button>Report incident</button>
+          <button onclick="window.location.href='/pages/reporter/incident_form.php'">Report incident</button>
           <button>My incidents</button>
           <button>Add evidence</button>
         </div>
