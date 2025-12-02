@@ -16,13 +16,15 @@ foreach ($users as $user) {
 
 
 
+
 if (!$found_user) {
-  header("Location: ../index.php?error=1");
+  header("Location: /index.php?error=1");
   exit;
 }
 
 $_SESSION["username"] = $found_user["username"];
 $_SESSION["logged_in"] = true;
-header("Location: ../main.php")
+$_SESSION["role"] = $found_user["role"];
+header("Location: /main.php")
 
   ?>
