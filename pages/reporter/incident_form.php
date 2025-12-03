@@ -28,7 +28,7 @@ while ($row = $asset->fetch_object()) {
 
 $content = <<<HTML
         <div class="report_container">
-        <h1>Incident Report Form</h1>
+        <h1 id="incident_form_header">Incident Report Form</h1>
         <div class="form_container">
             <form action="create_incident.php" method="POST" enctype="multipart/form-data">
                 <label for="severity">Severity</label>
