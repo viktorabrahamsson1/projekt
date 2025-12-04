@@ -1,0 +1,91 @@
+.all_users_wrapper {
+  width: 90%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.all_users {
+  width: 90%;
+  margin: 2rem auto;
+  font-family: sans-serif;
+  border: 1px solid #e3e5e8;
+  border-radius: 8px;
+}
+
+.all_users_header {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 1fr;
+  font-weight: bold;
+  background: #f7f8fa;
+  padding: 1px 15px;
+  border-bottom: 1px solid #e3e5e8;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.user-list li {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 1fr;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #e3e5e8;
+  background: white;
+  transition: background 0.12s;
+}
+
+.user-list li:last-child {
+  border-bottom: none;
+}
+
+.user-list li:hover {
+  background: #f5f7ff;
+}
+
+.user-list li p {
+  margin: 0;
+}
+
+.user-list li div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.user-list button {
+  padding: 6px 12px;
+  border: 1px solid #cfd2d8;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.user-list button:hover {
+  background: #eceff4;
+}
+
+.add-user-button {
+  align-self: flex-end;
+  margin-right: 5%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border-style: none;
+
+  background-color: var(--primary-bt-color);
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.add-user-button:hover {
+  background-color: var(--primary-bt-hover-color);
+}
