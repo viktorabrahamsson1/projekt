@@ -17,7 +17,7 @@
     <p>Sign in</p>
     <?php
     if (isset($_GET["error"]) && $_GET["error"] == 1) {
-      echo "<span style='color:red; font-size: 18px'>Invalid credentials</span>";
+      echo "<span>Invalid credentials</span>";
     }
     ?>
     <form action="auth/login.php" method="POST">

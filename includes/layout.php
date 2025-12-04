@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="/css/incident_form.css">
   <link rel="stylesheet" href="/css/incidents.css">
   <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/all_users.css">
+
 
   <title>main</title>
   <script src="../js/index.js"></script>

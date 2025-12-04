@@ -1,72 +1,7 @@
 <?php
 $content = <<<HTML
-    <section class="allUsers mainContent" id="allUsers">
-      <p>Users</p>
-      <ul class="userList">
-        <li>
-          <p>bob</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-        <li>
-          <p>Emma</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-        <li>
-          <p>Jesper</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-        <li>
-          <p>ben</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-        <li>
-          <p>james</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-        <li>
-          <p>peter</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-           <li>
-          <p>peter</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-           <li>
-          <p>peter</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-           <li>
-          <p>peter</p>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-      </ul>
+    <section class="allUsers" id="allUsers">
+      
     </section>
   HTML;
 

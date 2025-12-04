@@ -34,6 +34,9 @@ body {
 
 .loginsection > span {
   align-self: flex-start;
+  font-size: 18px;
+  color: red;
+  margin: 0;
 }
 
 .loginsection > form {
