@@ -1,11 +1,3 @@
-:root {
-  --primary-bg-color: #8f7fee;
-  --primary-bt-color: #eecc85;
-  --primary-bt-hover-color: #e6b863;
-  --primary-bt-delete-color: #e02a2a;
-  --primary-bt-delete-hover-color: #b32222;
-}
-
 body {
   display: grid;
   grid-template-columns: 15rem auto;
@@ -22,7 +14,7 @@ HEADER
 */
 
 header {
-  background-color: #8f7fee;
+  background-color: var(--primary-bg-color);
   grid-column: 1 / 3;
   grid-row: 1;
   border-bottom: 2px solid black;
@@ -64,11 +56,11 @@ header > div > button:first-of-type:hover {
 }
 
 header > div > button:last-of-type {
-  background-color: #e02a2a;
+  background-color: var(--primary-bt-delete-color);
 }
 
 header > div > button:last-of-type:hover {
-  background-color: #b32222;
+  background-color: var(--primary-bt-delete-hover-color);
 }
 
 header > div > button:hover {
@@ -82,7 +74,7 @@ ASIDE
 */
 
 aside {
-  background-color: #8f7fee;
+  background-color: var(--primary-bg-color);
   grid-column: 1;
   grid-row: 2;
 
@@ -101,7 +93,7 @@ aside {
 }
 
 .aside-button-container > button {
-  background-color: #eecc85;
+  background-color: var(--primary-bt-color);
 
   padding: 10px 30px 10px 30px;
   border: none;
@@ -115,7 +107,7 @@ aside {
 }
 
 .aside-button-container > button:hover {
-  background-color: #e6b863;
+  background-color: var(--primary-bt-hover-color);
   cursor: pointer;
 }
 

@@ -1,15 +1,8 @@
 :root {
   --primary-bg-color: #8f7fee;
+  --primary-bg-hover-color: #7541ef;
   --primary-bt-color: #eecc85;
   --primary-bt-hover-color: #e6b863;
   --primary-bt-delete-color: #e02a2a;
   --primary-bt-delete-hover-color: #b32222;
-}
-
-body {
-  width: 100vw;
-  height: 95vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
