@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="/css/incidents.css">
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/all_users.css">
+  <link rel="stylesheet" href="/css/add_user.css">
+
 
 
   <title>main</title>
