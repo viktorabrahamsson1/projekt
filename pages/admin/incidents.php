@@ -1,6 +1,8 @@
 <?php
-
+require_once "../../includes/session.php";
 require_once "../../includes/db.php";
+require_once "../../auth/auth.php";
+requireRoles(["admin"]);
 
 $incident_query = "SELECT * FROM incident";
 $incident = $mysqli->query($incident_query);

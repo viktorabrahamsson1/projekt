@@ -1,4 +1,8 @@
 <?php
+require_once "../../includes/session.php";
+require_once "../../auth/auth.php";
+requireRoles(["admin"]);
+
 $content = <<<HTML
 <section class="add_user_form_container">
   <h2>Add New User</h2>

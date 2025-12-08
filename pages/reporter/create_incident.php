@@ -1,5 +1,9 @@
 <?php
+require_once "../../includes/session.php";
 require_once "../../includes/db.php";
+require_once "../../auth/auth.php";
+requireRoles(["reporter"]);
+
 
 if (
     !isset($_POST["severity"]) ||

@@ -1,4 +1,8 @@
 <?php
+require_once "../../includes/session.php";
+require_once "../../auth/auth.php";
+requireRoles(["admin"]);
+
 $content = <<<HTML
   <div class="all_users_wrapper" >
     <section class="all_users" id="allUsers">
