@@ -4,7 +4,9 @@ require_once "../../auth/auth.php";
 requireRoles(["admin"]);
 
 $content = <<<HTML
-<p>ANALYTICS</p>
+<div>
+  <p>ANALYTICS</p>
+</div>
 HTML;
 
 require "../../includes/layout.php"
