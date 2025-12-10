@@ -1,6 +1,6 @@
 .report_container {
   width: 500px;
-  height: 500px;
+  height: -webkit-fill-available;
   background-color: var(--primary-bg-color);
   border-radius: 4px;
   top: 50%;
@@ -26,6 +26,12 @@
 }
 
 .form_container > form > select {
+  padding: 10px;
+  border: 1px black;
+  border-radius: 5px;
+}
+
+.form_container > form > div > select {
   padding: 10px;
   border: 1px black;
   border-radius: 5px;
@@ -57,4 +63,10 @@ form > button {
 form > button:hover {
   background-color: var(--primary-bt-hover-color);
   cursor: pointer;
+}
+
+#asset_container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
