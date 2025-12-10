@@ -17,7 +17,7 @@ if (
 
 $severity_id = intval($_POST["severity"]);
 $incident_type_id = intval($_POST["incident_type"]);
-$asset_id = intval($_POST["incident_asset"]);
+$asset_ids = array_map('intval', $_POST["incident_asset"]);
 $description = $mysqli->real_escape_string($_POST["description"]);
 $occurrence_datetime = date("Y-m-d H:i:s");
 
@@ -34,15 +34,29 @@ if ($mysqli->error) {
 
 $incident_id = $mysqli->insert_id;
 
-$insertAsset = "
-    INSERT INTO incident_asset (asset_id, incident_id)
-    VALUES ($asset_id, $incident_id)
-";
+foreach ($asset_ids as $asset_id) {
 
-$mysqli->query($insertAsset);
+    $asset_id = intval($asset_id);
 
-if ($mysqli->error) {
-    die("Error linking asset: " . $mysqli->error);
+    $check = $mysqli->query("
+        SELECT 1 FROM incident_asset 
+        WHERE asset_id = $asset_id AND incident_id = $incident_id
+    ");
+
+    if ($check->num_rows > 0) {
+        continue;
+    }
+
+    $insertAsset = "
+        INSERT INTO incident_asset (asset_id, incident_id)
+        VALUES ($asset_id, $incident_id)
+    ";
+
+    $mysqli->query($insertAsset);
+
+    if ($mysqli->error) {
+        die("Error linking asset: " . $mysqli->error);
+    }
 }
 
 if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {

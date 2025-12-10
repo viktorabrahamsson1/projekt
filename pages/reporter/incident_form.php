@@ -46,11 +46,15 @@ $content = <<<HTML
                     $typeOptions
                 </select>
 
-                <label for="incident_asset">Incident Asset</label>
-                <select name="incident_asset" id="incident_asset" required>
-                    <option value="">Choose Incident-Asset</option>
-                    $assetOptions
-                </select>
+                <div id="asset_container">
+                    <label for="incident_asset">Incident Asset</label>
+                    <select name="incident_asset" id="incident_asset" required>
+                        <option value="">Choose Incident-Asset</option>
+                        $assetOptions
+                    </select>
+                </div>
+
+                <button type="button" onclick="addAsset()">Add Asset</button>
 
                 <label for="image">Upload image of incident</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
@@ -64,5 +68,23 @@ $content = <<<HTML
         </div>
     </div>
 HTML;
+
+$content .= <<<JS
+<script>
+    function addAsset() {
+        const container = document.getElementById("asset_container");
+
+        const select = document.createElement("select");
+        select.name = "incident_asset[]";
+        select.classList.add("incident_asset");
+        select.required = true;
+
+        select.innerHTML = `<option value="">Choose Incident-Asset</option>
+                        $assetOptions`;
+
+        container.appendChild(select);
+    }
+</script>
+JS;
 
 require_once "../../includes/layout.php";

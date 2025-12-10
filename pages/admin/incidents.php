@@ -17,18 +17,15 @@ while ($row = $incident->fetch_object()) {
   $incident_type_result = $mysqli->query("SELECT incident_type FROM incident_type WHERE incident_type_id = {$row->incident_type_id}");
   $incident_type = $incident_type_result->fetch_object()->incident_type;
 
-  $incident_asset_result = $mysqli->query("SELECT asset_id FROM incident_asset WHERE incident_id = {$row->incident_id}");
-  $incident_asset_id = $incident_asset_result->fetch_object()->asset_id;
-
-  $asset_result = $mysqli->query("SELECT asset FROM asset WHERE asset_id = {$incident_asset_id}");
-  $asset = $asset_result->fetch_object()->asset;
+  $asset_result = $mysqli->query("SELECT COUNT(*) FROM incident_asset WHERE incident_id = {$row->incident_id}");
+  $asset_count = $asset_result->fetch_object()->{"COUNT(*)"};
 
   $incident_row .= "
         <tr>
           <td>{$row->incident_id}</td>
           <td>{$severity}</td>
           <td>{$incident_type}</td>
-          <td>{$asset}</td>
+          <td>{$asset_count}</td>
           <td>{$row->occurrence_datetime}</td>
           <td>{$row->updated_at}</td>
           <td>
@@ -57,7 +54,7 @@ $content = <<<HTML
             <h3>Type</h3>
           </th>
           <th>
-            <h3>Asset</h3>
+            <h3>Affected Assets</h3>
           </th>
           <th>
             <h3>Occurrence</h3>
