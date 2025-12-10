@@ -33,7 +33,7 @@
    Scroll Wrapper
 ================================ */
 .visitlogs_table_wrapper {
-    max-height: 400px;       /* visible height before scroll */
+    max-height: 650px;       /* visible height before scroll */
     overflow-y: auto;        /* enable vertical scroll */
     overflow-x: hidden;      /* no horizontal scroll */
     margin-top: 10px;

@@ -37,9 +37,7 @@ if (!$result) {
 $content = <<<HTML
 
 <section class="visitlogs_container">
-
-    <h2 class="visitlogs_title">Visit Logs</h2>
-
+    
     <div class="visitlogs_card">
 
         <div class="visitlogs_table_wrapper">

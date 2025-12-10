@@ -27,52 +27,25 @@ VALUES
 INSERT INTO browser (browser) VALUES 
 ('Chrome'),
 ('Firefox'),
-('Safari'),
 ('Edge'),
 ('Opera'),
-('Opera GX'),
+('Safari'),
 ('Brave'),
-('Vivaldi'),
-('Tor Browser'),
-('Chromium'),
-('Waterfox'),
-('Pale Moon');
+('Unknown');
 
-INSERT INTO page_url (page_url) VALUES 
-('https://example.com/login'),
-('https://example.com'),
-('https://example.com/dashboard'),
-('https://example.com/account'),
-('https://example.com/logout'),
-('https://intranet.local'),
-('https://intranet.local/admin');
-
--- ===============================
--- VISIT LOG
--- ===============================
-
-INSERT INTO visit_log (page_url_id, browser_id, host_ip)
-VALUES 
-(1, 1, '127.0.0.1'),
-(2, 3, '192.168.1.10'),
-(3, 2, '10.0.0.5'),
-(4, 5, '172.16.0.22'),
-(5, 7, '192.168.1.55'),
-(6, 1, '10.10.10.10'),
-(7, 4, '192.168.0.199');
-
--- ===============================
--- ASSOCIATE USER
--- ===============================
-
-INSERT INTO user_visit_log VALUES 
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 1),
-(6, 5),
-(7, 7);
+INSERT INTO page_url (page_url_id, page_url) VALUES
+(1, '/index.php'),
+(2, '/incident/create.php'),
+(3, '/login.php'),
+(4, '/dashboard.php'),
+(5, '/account/settings.php'),
+(6, '/logout.php'),
+(7, '/reports/view.php'),
+(8, '/pages/admin/visitLogs.php'),
+(9, '/pages/admin/allUsers.php'),
+(10, '/pages/admin/incidents.php'),
+(11, '/pages/admin/analytics.php'),
+(12, '/pages/admin/add_user.php');
 
 -- ===============================
 -- SEVERITY - INCIDENT TYPES - ASSETS

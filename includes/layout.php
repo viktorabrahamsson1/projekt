@@ -1,4 +1,7 @@
-<?php require_once "session.php" ?>
+<?php 
+require_once "session.php";
+require_once "track_visit.php";
+?>
 
 
 <!DOCTYPE html>
