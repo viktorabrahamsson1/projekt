@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/all_users.css">
   <link rel="stylesheet" href="/css/add_user.css">
-
+  <link rel="stylesheet" href="../../css/visitLogs.css">
 
 
   <title>main</title>
