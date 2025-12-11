@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "session.php";
 require_once "track_visit.php";
 ?>
@@ -20,7 +20,9 @@ require_once "track_visit.php";
 
 
   <title>main</title>
-  <script src="../js/index.js"></script>
+  <script src="/js/index.js" defer></script>
+  <script src="/js/deleteModal.js" defer></script>
+
 
 </head>
 
@@ -84,7 +86,15 @@ require_once "track_visit.php";
     echo $content;
     ?>
   </main>
-
+  <div id="deleteModal" class="modal-overlay">
+    <div class="modal-box">
+      <p>Are you sure you want to delete this user?</p>
+      <div class="modal-actions">
+        <button id="cancelDelete">Cancel</button>
+        <button id="confirmDelete">Delete</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

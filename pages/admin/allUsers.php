@@ -5,7 +5,7 @@ require_once "../../includes/db.php";
 requireRoles(["admin"]);
 
 $sql = "
-SELECT user.first_name, user.email, role.role
+SELECT user.user_id, user.first_name, user.last_name, user.email, role.role
 FROM user
 JOIN role ON user.role_id = role.role_id
 ";
@@ -14,7 +14,8 @@ $content = '
 <div class="all_users_wrapper">
   <section class="all_users" id="allUsers">
     <div class="all_users_header">
-      <p>Name</p>
+      <p>First name</p>
+      <p>Last name</p>
       <p>Email address</p>
       <p>Role</p>
     </div>
@@ -28,11 +29,12 @@ if ($result && $result->num_rows > 0) {
     $content .= "
       <li>
         <p>{$row['first_name']}</p>
+        <p>{$row['last_name']}</p>
         <p>{$row['email']}</p>
         <p>{$row['role']}</p>
         <div>
           <button>Edit</button>
-          <button>Delete</button>
+          <button class='delete-btn' data-userid={$row['user_id']}>Delete</button>
         </div>
       </li>
     ";
