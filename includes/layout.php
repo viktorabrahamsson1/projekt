@@ -22,6 +22,8 @@ require_once "track_visit.php";
   <title>main</title>
   <script src="/js/index.js" defer></script>
   <script src="/js/deleteModal.js" defer></script>
+  <script src="/js/editUser.js" defer></script>
+
 
 
 </head>

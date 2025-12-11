@@ -33,7 +33,7 @@ if ($result && $result->num_rows > 0) {
         <p>{$row['email']}</p>
         <p>{$row['role']}</p>
         <div>
-          <button>Edit</button>
+          <button class='edit-btn' data-userid={$row['user_id']} data-first-name={$row['first_name']} data-role={$row['role']}>Edit</button>
           <button class='delete-btn' data-userid={$row['user_id']}>Delete</button>
         </div>
       </li>

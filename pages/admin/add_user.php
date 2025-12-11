@@ -5,7 +5,7 @@ require_once "../../includes/db.php";
 requireRoles(["admin"]);
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST" && !isset($_POST["id"])) {
 
   $first = $_POST["firstname"] ?? "";
   $last = $_POST["lastname"] ?? "";
@@ -47,10 +47,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   }
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
+  // game on
+}
+
+$user_id = null;
+$title = "Add New User";
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
+  $user_id = $_GET["id"];
+  if (isset($user_id)) {
+    $title = "Edit User: {$_GET['first_name']} ({$_GET['role']})";
+    //TODO ändra knapp innehåll från create till edit user när man ska edita. 
+  }
+
+}
+
+
+
 
 $content = <<<HTML
 <section class="add_user_form_container">
-  <h2>Add New User</h2>
+  <h2>$title</h2>
 
 HTML;
 
