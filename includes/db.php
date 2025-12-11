@@ -1,9 +1,9 @@
 <?php
 //If you want to try yourself just enter your specific MySql and xampp info
-$host = "localhost";
+$host = "127.0.0.1";
 $user = "root";
 $pass = "";
-$db   = "er-test";
+$db = "incident_db";
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 

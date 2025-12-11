@@ -10,27 +10,27 @@ if (stripos($ua, "Edg") !== false) {
     $browserId = 3;
     $detected = "Edge";
 
-// OPERA
+    // OPERA
 } elseif (stripos($ua, "OPR") !== false || stripos($ua, "Opera") !== false) {
     $browserId = 4;
     $detected = "Opera";
 
-// BRAVE
+    // BRAVE
 } elseif (stripos($ua, "Brave") !== false) {
     $browserId = 6;
     $detected = "Brave";
 
-// FIREFOX
+    // FIREFOX
 } elseif (stripos($ua, "Firefox") !== false) {
     $browserId = 2;
     $detected = "Firefox";
 
-// CHROME (must come *after* Edge/Opera/Brave, but *before* Safari)
+    // CHROME (must come *after* Edge/Opera/Brave, but *before* Safari)
 } elseif (stripos($ua, "Chrome") !== false) {
     $browserId = 1;
     $detected = "Chrome";
 
-// SAFARI (only true IF none of the above matched)
+    // SAFARI (only true IF none of the above matched)
 } elseif (stripos($ua, "Safari") !== false) {
     $browserId = 5;
     $detected = "Safari";
@@ -38,7 +38,8 @@ if (stripos($ua, "Edg") !== false) {
 
 // IP
 $ip = $_SERVER["REMOTE_ADDR"] ?? "0.0.0.0";
-if ($ip === "::1") $ip = "127.0.0.1";
+if ($ip === "::1")
+    $ip = "127.0.0.1";
 
 // PAGE
 $page = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
