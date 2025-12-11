@@ -12,13 +12,12 @@ INSERT INTO role (role) VALUES
 
 INSERT INTO user (role_id, first_name, last_name, username, email, password_hash)
 VALUES 
-(1, 'John', 'Doe', 'jdoe', 'john@example.com', 'hash1'),
-(2, 'Bob', 'Bengtsson', 'bob', 'bob@example.com', 'hash2'),
-(3, 'Alice', 'Adminsson', 'alice', 'alice@example.com', 'hash3'),
-(2, 'Eve', 'Larsson', 'elarsson', 'eve@example.com', 'hash4'),
-(3, 'Charlie', 'Nyström', 'cny', 'charlie@example.com', 'hash5'),
-(2, 'David', 'Ek', 'dek', 'david@example.com', 'hash6'),
-(3, 'Mia', 'Holm', 'mholm', 'mia@example.com', 'hash7');
+(1, 'Admin', 'User', 'admin', 'admin@example.com',
+'$2y$10$sfoFlGLobbCkepNZXxmIjuarrwKfR9dbE3gHg.d4sm5ydWVnD9.Cm'),
+(2, 'Responder', 'User', 'responder', 'responder@example.com',
+'$2y$10$UFztR7Mlzg.2s92RytxZq.4Ckigcren18ARJpke63yYSVfwpmLKcK'),
+(3, 'Reporter', 'User', 'reporter', 'reporter@example.com',
+'$2y$10$DPtd1crzvtbwaRZDcWUte..4P4jHdmU1PyF84WW0WP.tXXWxo9lNO');
 
 -- ===============================
 -- BROWSER - PAGE_URL
