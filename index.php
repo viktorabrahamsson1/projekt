@@ -23,7 +23,7 @@
     <form action="auth/login.php" method="POST">
       <input type="text" placeholder="Username" id="username" name="username" required />
       <input type="password" placeholder="Password" id="password" name="password" required />
-      <button onclick="login()">Log in</button>
+      <button type="submit">Log in</button>
     </form>
   </section>
 </body>
