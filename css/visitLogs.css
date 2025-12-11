@@ -1,13 +1,9 @@
-/* ===============================
-   Page Container
-================================ */
 .visitlogs_container {
     width: 80%;
     margin: 0 auto;
     padding-top: 20px;
 }
 
-/* Title */
 .visitlogs_title {
     text-align: center;
     font-size: 28px;
@@ -15,9 +11,6 @@
     margin-bottom: 20px;
 }
 
-/* ===============================
-   Card
-================================ */
 .visitlogs_card {
     background: white;
     padding: 25px;
@@ -26,30 +19,23 @@
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    overflow: hidden; /* prevents card expanding beyond scroll height */
+    overflow: hidden;
 }
 
-/* ===============================
-   Scroll Wrapper
-================================ */
 .visitlogs_table_wrapper {
-    max-height: 650px;       /* visible height before scroll */
-    overflow-y: auto;        /* enable vertical scroll */
-    overflow-x: hidden;      /* no horizontal scroll */
+    max-height: 650px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
     margin-top: 10px;
-    display: block;          /* REQUIRED for scroll to work */
+    display: block; 
 }
 
-/* ===============================
-   Table Styling
-================================ */
 .visitlogs_table {
     width: 100%;
     border-collapse: collapse;
     font-size: 15px;
 }
 
-/* Header */
 .visitlogs_table th {
     background: #f4f4f4;
     padding: 14px;
@@ -58,20 +44,17 @@
     text-align: left;
 }
 
-/* Table Cells */
 .visitlogs_table td {
     padding: 14px;
     border-bottom: 1px solid #ddd;
     background: white;
 }
 
-/* Disable alternating row colors from global CSS */
 .visitlogs_table tr:nth-child(odd) td,
 .visitlogs_table tr:nth-child(even) td {
     background: white !important;
 }
 
-/* Placeholder row */
 .placeholder_row td {
     text-align: center;
     font-style: italic;

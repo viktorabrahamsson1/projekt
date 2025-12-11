@@ -2,12 +2,9 @@
 require_once "../../includes/session.php";
 require_once "../../auth/auth.php";
 requireRoles(["admin"]);
-require_once "../../includes/db.php";   // gives you $mysqli
+require_once "../../includes/db.php"; 
 
-
-// =======================================
-// Fetch FULLY dynamic visit logs using JOIN
-// =======================================
+// Fetch dynamic visit logs using JOIN
 $sql = "
     SELECT 
         v.visit_log_id,
@@ -30,10 +27,7 @@ if (!$result) {
     die("Query error: " . $mysqli->error);
 }
 
-
-// =======================================
-// PAGE CONTENT
-// =======================================
+// Page content
 $content = <<<HTML
 
 <section class="visitlogs_container">
@@ -55,10 +49,7 @@ $content = <<<HTML
                 <tbody>
 HTML;
 
-
-// =======================================
-// Loop through rows dynamically
-// =======================================
+// Loop through rows
 while ($row = $result->fetch_assoc()) {
 
     $browser = $row["browser_name"] ?? "Unknown";
@@ -75,7 +66,6 @@ while ($row = $result->fetch_assoc()) {
     ";
 }
 
-
 // If no rows exist
 if ($result->num_rows === 0) {
     $content .= '
@@ -84,7 +74,6 @@ if ($result->num_rows === 0) {
         </tr>
     ';
 }
-
 
 // Close table + wrapper
 $content .= <<<HTML
@@ -98,7 +87,5 @@ $content .= <<<HTML
 
 HTML;
 
-
-// Show page in layout
 require "../../includes/layout.php";
 ?>
