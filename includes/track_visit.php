@@ -25,12 +25,12 @@ if (stripos($ua, "Edg") !== false) {
     $browserId = 2;
     $detected = "Firefox";
 
-// CHROME (must come *after* Edge/Opera/Brave, but *before* Safari)
+// CHROME
 } elseif (stripos($ua, "Chrome") !== false) {
     $browserId = 1;
     $detected = "Chrome";
 
-// SAFARI (only true IF none of the above matched)
+// SAFARI
 } elseif (stripos($ua, "Safari") !== false) {
     $browserId = 5;
     $detected = "Safari";
