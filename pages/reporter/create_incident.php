@@ -8,7 +8,7 @@ requireRoles(["reporter"]);
 if (
     !isset($_POST["severity"]) ||
     !isset($_POST["incident_type"]) ||
-    !isset($_POST["incident_asset"]) ||
+    !isset($_POST["assets"]) ||
     !isset($_POST["description"]) ||
     !isset($_FILES["image"])
 ) {
@@ -17,9 +17,12 @@ if (
 
 $severity_id = intval($_POST["severity"]);
 $incident_type_id = intval($_POST["incident_type"]);
-$asset_ids = array_map('intval', $_POST["incident_asset"]);
+$selectedAssets = array_map('intval', $_POST["assets"]);
 $description = $mysqli->real_escape_string($_POST["description"]);
-$occurrence_datetime = date("Y-m-d H:i:s");
+$occurrence_datetime = date(
+    'Y-m-d H:i:s',
+    strtotime($_POST['occurrence_datetime'])
+);
 
 $insertIncident = "
     INSERT INTO incident (severity_id, incident_type_id, description, occurrence_datetime)
@@ -34,13 +37,13 @@ if ($mysqli->error) {
 
 $incident_id = $mysqli->insert_id;
 
-foreach ($asset_ids as $asset_id) {
+foreach ($selectedAssets as $asset) {
 
-    $asset_id = intval($asset_id);
+    $asset = intval($asset);
 
     $check = $mysqli->query("
         SELECT 1 FROM incident_asset 
-        WHERE asset_id = $asset_id AND incident_id = $incident_id
+        WHERE asset_id = $asset AND incident_id = $incident_id
     ");
 
     if ($check->num_rows > 0) {
@@ -49,7 +52,7 @@ foreach ($asset_ids as $asset_id) {
 
     $insertAsset = "
         INSERT INTO incident_asset (asset_id, incident_id)
-        VALUES ($asset_id, $incident_id)
+        VALUES ($asset, $incident_id)
     ";
 
     $mysqli->query($insertAsset);

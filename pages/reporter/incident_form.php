@@ -25,7 +25,10 @@ $asset_query = "SELECT asset_id, asset FROM asset";
 $asset = $mysqli->query($asset_query);
 
 while ($row = $asset->fetch_object()) {
-    $assetOptions .= "<option value=\"{$row->asset_id}\">{$row->asset}</option>";
+    $assetOptions .= "<div>
+    <input id=\"{$row->asset_id}\" type=\"checkbox\" name=\"assets[]\" value=\"{$row->asset_id}\"> 
+    <label for=\"{$row->asset_id}\">{$row->asset}</label>
+</div>";
 }
 
 
@@ -47,17 +50,15 @@ $content = <<<HTML
                 </select>
 
                 <div id="asset_container">
-                    <label for="incident_asset">Incident Asset</label>
-                    <select name="incident_asset" id="incident_asset" required>
-                        <option value="">Choose Incident-Asset</option>
-                        $assetOptions
-                    </select>
+                    <label for="asset_container">Choose affected assets</label>
+                    $assetOptions
                 </div>
-
-                <button type="button" onclick="addAsset()">Add Asset</button>
 
                 <label for="image">Upload image of incident</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
+
+                <label for="occurrence_datetime">Set date of occurence</label>
+                <input type="datetime-local" id="occurrence_datetime" name="occurrence_datetime">
 
                 <label for="description">Description</label>
                 <textarea name="description" id="description" rows="5" cols="40"
@@ -68,23 +69,4 @@ $content = <<<HTML
         </div>
     </div>
 HTML;
-
-$content .= <<<JS
-<script>
-    function addAsset() {
-        const container = document.getElementById("asset_container");
-
-        const select = document.createElement("select");
-        select.name = "incident_asset[]";
-        select.classList.add("incident_asset");
-        select.required = true;
-
-        select.innerHTML = `<option value="">Choose Incident-Asset</option>
-                        $assetOptions`;
-
-        container.appendChild(select);
-    }
-</script>
-JS;
-
 require_once "../../includes/layout.php";
