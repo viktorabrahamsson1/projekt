@@ -2,6 +2,7 @@
 require_once "../../includes/session.php";
 require_once "../../auth/auth.php";
 require_once "../../includes/db.php";
+require_once "../../includes/alert.php";
 requireRoles(["admin"]);
 
 $userId = $_POST["user_id"] ?? $_GET["id"] ?? "";
@@ -10,7 +11,6 @@ $title = !$isEditing ? "Add User" : "Edit User";
 $btnText = !$isEditing ? "Create User" : "Edit User";
 
 $first = $last = $username = $email = $roleName = "";
-$error = "";
 
 if ($isEditing && $_SERVER["REQUEST_METHOD"] !== "POST") {
   $stmt = $mysqli->prepare("
@@ -60,26 +60,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       if ($isEditing) {
         if ($password) {
+
           $hash = password_hash($password, PASSWORD_DEFAULT);
           $stmt = $mysqli->prepare("
             UPDATE user
             SET first_name=?, last_name=?, username=?, email=?, password_hash=?, role_id=?
             WHERE user_id=?");
           $stmt->bind_param("sssssii", $first, $last, $username, $email, $hash, $roleId, $userId);
-          $stmt->execute();
-          header("Location: allUsers.php");
-          exit;
 
         } else {
+
           $stmt = $mysqli->prepare("
           UPDATE user
           SET first_name=?, last_name=?, username=?, email=?, role_id=?
           WHERE user_id=?");
           $stmt->bind_param("ssssii", $first, $last, $username, $email, $roleId, $userId);
+
+        }
+
+        try {
           $stmt->execute();
+          setAlert("You have successfully edited a user", "success");
           header("Location: allUsers.php");
           exit;
+        } catch (mysqli_sql_exception $e) {
+          setAlert("failed to edit user", "error");
+          header("Location: add_user.php?id=" . $userId);
+          exit;
         }
+
       } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $mysqli->prepare("
@@ -88,11 +97,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ");
 
         $stmt->bind_param("sssssi", $first, $last, $username, $email, $hash, $roleId);
-        if ($stmt->execute()) {
+
+        try {
+          $stmt->execute();
+          setAlert("You have Successfully created a new user", "success");
           header("Location: allUsers.php");
           exit;
-        } else {
-          $error = "Failed to create user: " . $mysqli->error;
+        } catch (mysqli_sql_exception $e) {
+          setAlert("Failed to create new user", "error");
+          header("Location: add_user.php ");
+          exit;
         }
       }
     }
@@ -112,9 +126,7 @@ $content = <<<HTML
   <h2>$title</h2>
 HTML;
 
-if (!empty($error)) {
-  $content .= "<p style='color:red; font-weight:bold;'>$error</p>";
-}
+
 
 $content .= <<<HTML
   <form class="add_user_form" id="addUserForm" method="POST" action="add_user.php">

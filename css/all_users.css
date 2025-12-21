@@ -39,15 +39,10 @@
   padding: 12px 15px;
   border-bottom: 1px solid #e3e5e8;
   background: white;
-  transition: background 0.12s;
 }
 
 .user-list li:last-child {
   border-bottom: none;
-}
-
-.user-list li:hover {
-  background: #f5f7ff;
 }
 
 .user-list li p {
@@ -96,8 +91,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* opacity effect */
-  display: none; /* hidden by default */
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
