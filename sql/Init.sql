@@ -47,9 +47,16 @@ CREATE TABLE user_visit_log (
     visit_log_id INT NOT NULL,
     user_id INT NOT NULL,
     PRIMARY KEY (visit_log_id, user_id),
-    FOREIGN KEY (visit_log_id) REFERENCES visit_log(visit_log_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+
+    FOREIGN KEY (visit_log_id)
+        REFERENCES visit_log(visit_log_id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (user_id)
+        REFERENCES user(user_id)
+        ON DELETE CASCADE
 );
+
 
 -- ===============================
 -- INCIDENTS
@@ -117,7 +124,14 @@ CREATE TABLE incident_status (
     incident_id INT NOT NULL,
     status_id INT NOT NULL,
     incident_status_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user(user_id),
-    FOREIGN KEY (incident_id) REFERENCES incident(incident_id),
-    FOREIGN KEY (status_id) REFERENCES status(status_id)
+
+    FOREIGN KEY (user_id)
+        REFERENCES user(user_id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (incident_id)
+        REFERENCES incident(incident_id),
+
+    FOREIGN KEY (status_id)
+        REFERENCES status(status_id)
 );
