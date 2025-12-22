@@ -45,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $roleName = $_POST["role"] ?? "";
 
   if (!$first || !$last || !$username || !$email || !$roleName) {
-    $error = "All fields are required.";
+    header("Location: allUsers.php");
+    exit;
   } else {
 
     $stmt = $mysqli->prepare("SELECT role_id FROM role WHERE role = ?");
@@ -54,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $roleResult = $stmt->get_result()->fetch_assoc();
 
     if (!$roleResult) {
-      $error = "Invalid role selected.";
+      setAlert("Failed to fetch role", "error", "allUsers.php");
     } else {
       $roleId = $roleResult["role_id"];
 
@@ -80,13 +81,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
           $stmt->execute();
-          setAlert("You have successfully edited a user", "success");
-          header("Location: allUsers.php");
-          exit;
+          setAlert("You have successfully edited a user", "success", "allUsers.php");
         } catch (mysqli_sql_exception $e) {
-          setAlert("failed to edit user", "error");
-          header("Location: add_user.php?id=" . $userId);
-          exit;
+          setAlert("failed to edit user", "error", "add_user.php?id=" . $userId);
         }
 
       } else {
@@ -100,13 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
           $stmt->execute();
-          setAlert("You have Successfully created a new user", "success");
-          header("Location: allUsers.php");
-          exit;
+          setAlert("You have Successfully created a new user", "success", "allUsers.php");
         } catch (mysqli_sql_exception $e) {
-          setAlert("Failed to create new user", "error");
-          header("Location: add_user.php ");
-          exit;
+          setAlert("Failed to create new user", "error", "add_user.php");
         }
       }
     }
