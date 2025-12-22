@@ -24,8 +24,7 @@ if ($isEditing && $_SERVER["REQUEST_METHOD"] !== "POST") {
   $user = $stmt->get_result()->fetch_assoc();
 
   if (!$user) {
-    header("Location: allUsers.php");
-    exit;
+    setAlert("Failed to fetch user", "error", "allUsers.php");
   }
 
   $first = $user["first_name"];
@@ -45,8 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $roleName = $_POST["role"] ?? "";
 
   if (!$first || !$last || !$username || !$email || !$roleName) {
-    header("Location: allUsers.php");
-    exit;
+    setAlert("Failed to fetch user information", "error", "allUsers.php");
   } else {
 
     $stmt = $mysqli->prepare("SELECT role_id FROM role WHERE role = ?");
