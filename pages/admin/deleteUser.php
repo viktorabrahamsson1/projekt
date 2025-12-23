@@ -1,9 +1,10 @@
 <?php
 require_once "../../includes/session.php";
 require_once "../../auth/auth.php";
+requireLogin();
+requireRoles(["admin"]);
 require_once "../../includes/db.php";
 require_once "../../includes/alert.php";
-requireRoles(["admin"]);
 
 $user_id = $_GET["id"] ?? null;
 

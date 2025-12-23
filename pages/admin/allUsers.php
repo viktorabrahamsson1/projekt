@@ -1,8 +1,9 @@
 <?php
 require_once "../../includes/session.php";
 require_once "../../auth/auth.php";
-require_once "../../includes/db.php";
+requireLogin();
 requireRoles(["admin"]);
+require_once "../../includes/db.php";
 
 $sql = "
 SELECT user.user_id, user.first_name, user.last_name, user.email, role.role
