@@ -2,6 +2,7 @@
 require_once "../../includes/session.php";
 require_once "../../includes/db.php";
 require_once "../../auth/auth.php";
+require_once "../../includes/alert.php";
 requireRoles(["reporter"]);
 
 
@@ -11,10 +12,7 @@ if (
     !isset($_POST["assets"]) ||
     !isset($_POST["description"])
 ) {
-    echo "<script>
-        alert('Every field besides photo evidence is required!');
-        window.location.href = 'incident_form.php';
-        </script>";
+    setAlert("All fields besides photo evidence needs to be filled", "error", "incident_form.php");
 }
 
 $severity_id = intval($_POST["severity"]);
@@ -83,12 +81,9 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
 
         $mysqli->query($insertImage);
     } else {
-        echo "Warning: Failed to upload file.";
+        setAlert("Image could not be uploaded", "error", "incident_form.php");
     }
 }
 
-echo "<script>
-        alert('Incident created successfully!');
-        window.location.href = 'incident_form.php';
-      </script>";
+setAlert("Incident was successfully created", "success", "incident_form.php");
 exit;
