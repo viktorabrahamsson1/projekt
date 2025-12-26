@@ -55,7 +55,7 @@ $content = <<<HTML
                 </div>
 
                 <label for="image">Upload image of incident</label>
-                <input type="file" id="image" name="image" accept="image/*" required>
+                <input type="file" id="image" name="image" accept="image/*">
 
                 <label for="occurrence_datetime">Set date of occurence</label>
                 <input type="datetime-local" id="occurrence_datetime" name="occurrence_datetime">
