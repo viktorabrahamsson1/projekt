@@ -132,8 +132,8 @@ VALUES
 
 INSERT INTO status (status) VALUES 
 ('Pending'), 
-('Investigating'), 
-('Closed');
+('In Progress'), 
+('Resolved');
 
 -- ===============================
 -- INCIDENT_STATUS

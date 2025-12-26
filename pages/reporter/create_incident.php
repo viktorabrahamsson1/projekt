@@ -9,10 +9,12 @@ if (
     !isset($_POST["severity"]) ||
     !isset($_POST["incident_type"]) ||
     !isset($_POST["assets"]) ||
-    !isset($_POST["description"]) ||
-    !isset($_FILES["image"])
+    !isset($_POST["description"])
 ) {
-    die("Missing form data.");
+    echo "<script>
+        alert('Every field besides photo evidence is required!');
+        window.location.href = 'incident_form.php';
+        </script>";
 }
 
 $severity_id = intval($_POST["severity"]);
@@ -62,7 +64,7 @@ foreach ($selectedAssets as $asset) {
     }
 }
 
-if ($_FILES["image"]["error"] === UPLOAD_ERR_OK) {
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
 
     $uploadDir = "../../includes/images/";
     if (!is_dir($uploadDir)) {
