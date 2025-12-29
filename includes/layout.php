@@ -56,7 +56,8 @@ require_once "track_visit.php";
       $buttons .= <<<HTML
           <div class=" aside-button-container" id="responder">
             <p>Responder</p>
-            <button>All indcidents</button>
+            <button onclick="window.location.href='/pages/responder/pending_incidents.php'">Pending incidents</button>
+            <button onclick="window.location.href='/pages/responder/assigned_incidents.php'">Assigned incidents</button>
             <button>Update status</button>
             <button>Add comment</button>
           </div>
