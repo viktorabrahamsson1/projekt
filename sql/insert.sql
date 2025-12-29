@@ -47,7 +47,7 @@ INSERT INTO page_url (page_url_id, page_url) VALUES
 (11, '/pages/admin/analytics.php'),
 (12, '/pages/admin/add_user.php'),
 -- REPORTER
-(13, '/pages/reporter/incident_form.php')
+(13, '/pages/reporter/incident_form.php');
 -- RESPONDER
 
 
