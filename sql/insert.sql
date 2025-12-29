@@ -12,7 +12,7 @@ INSERT INTO role (role) VALUES
 
 INSERT INTO user (role_id, first_name, last_name, username, email, password_hash)
 VALUES 
-(1, 'Admin', 'User', 'admin', 'admin@example.com',
+(1, 'Admin', 'User', 'administrator', 'admin@example.com',
 '$2y$12$x1tKvIviiwzX4nybv3/2I.0Wc64m4ayY.NYAzOMbADKVtSO3c0dnO'),
 (2, 'Responder', 'User', 'responder', 'responder@example.com',
 '$2y$12$fOcMvz4Tg/RONpswaQtacOFcJyMPVmhRqTWk9miPZhtsEHxlrtaHu'),
