@@ -59,6 +59,7 @@ $pageMap = [
     "/pages/admin/incidents.php" => 10,
     "/pages/admin/analytics.php" => 11,
     "/pages/admin/add_user.php" => 12,
+    "/pages/reporter/incident_form.php" => 13,
 ];
 
 $pageId = $pageMap[$page] ?? null;
