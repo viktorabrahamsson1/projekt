@@ -13,11 +13,11 @@ INSERT INTO role (role) VALUES
 INSERT INTO user (role_id, first_name, last_name, username, email, password_hash)
 VALUES 
 (1, 'Admin', 'User', 'admin', 'admin@example.com',
-'$2y$10$sfoFlGLobbCkepNZXxmIjuarrwKfR9dbE3gHg.d4sm5ydWVnD9.Cm'),
+'$2y$12$x1tKvIviiwzX4nybv3/2I.0Wc64m4ayY.NYAzOMbADKVtSO3c0dnO'),
 (2, 'Responder', 'User', 'responder', 'responder@example.com',
-'$2y$10$UFztR7Mlzg.2s92RytxZq.4Ckigcren18ARJpke63yYSVfwpmLKcK'),
+'$2y$12$fOcMvz4Tg/RONpswaQtacOFcJyMPVmhRqTWk9miPZhtsEHxlrtaHu'),
 (3, 'Reporter', 'User', 'reporter', 'reporter@example.com',
-'$2y$10$DPtd1crzvtbwaRZDcWUte..4P4jHdmU1PyF84WW0WP.tXXWxo9lNO');
+'$2y$12$lMzFDdLLoWRrCV0nETNqTeuICr2i9a4qOnWOXFs7gOzlN9flIhF72');
 
 -- ===============================
 -- BROWSER - PAGE_URL
