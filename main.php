@@ -15,7 +15,7 @@ if ($_SESSION["role"] === "admin") {
     SUM(role.role = 'Responder') AS responders,
     SUM(role.role = 'Reporter') AS reporters
     FROM user
-    JOIN role ON user.role_id = role.rolee_id;
+    JOIN role ON user.role_id = role.role_id;
 ";
 
   try {
