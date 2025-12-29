@@ -16,7 +16,7 @@ require_once "track_visit.php";
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/all_users.css">
   <link rel="stylesheet" href="/css/add_user.css">
-  <link rel="stylesheet" href="../../css/visitLogs.css">
+  <link rel="stylesheet" href="/css/visitLogs.css">
   <link rel="stylesheet" href="/css/error.css">
 
 
@@ -44,6 +44,7 @@ require_once "track_visit.php";
       $buttons .= <<<HTML
         <div class="aside-button-container" id="reporter">
           <p>Reporter</p>
+            <button onclick="window.location.href='/main.php'">Dashboard</button>
           <button onclick="window.location.href='/pages/reporter/incident_form.php'">Report incident</button>
           <button>My incidents</button>
           <button>Add evidence</button>
@@ -58,6 +59,8 @@ require_once "track_visit.php";
             <p>Responder</p>
             <button onclick="window.location.href='/pages/responder/pending_incidents.php'">Pending incidents</button>
             <button onclick="window.location.href='/pages/responder/assigned_incidents.php'">Assigned incidents</button>
+            <button onclick="window.location.href='/main.php'">Dashboard</button>
+            <button>All indcidents</button>
             <button>Update status</button>
             <button>Add comment</button>
           </div>
@@ -68,8 +71,9 @@ require_once "track_visit.php";
     if ($_SESSION["role"] === "admin") {
       $buttons .= <<<HTML
         <div class="aside-button-container" id="admin">
-          <p>Admin</p>
-          <button onclick="window.location.href='/pages/admin/incidents.php'">View incidents</button>
+            <p>Admin</p>
+            <button onclick="window.location.href='/main.php'">Dashboard</button>
+            <button onclick="window.location.href='/pages/admin/incidents.php'">View incidents</button>
           <button onclick="window.location.href='/pages/admin/allUsers.php'">All users</button>
           <button onclick="window.location.href='/pages/admin/analytics.php'">Analytics</button>
           <button onclick="window.location.href='/pages/admin/visitLogs.php'">Visit logs</button>

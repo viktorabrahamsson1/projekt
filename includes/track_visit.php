@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . "/db.php";
+require_once __DIR__ . "/session.php";
+
 
 $ua = $_SERVER["HTTP_USER_AGENT"] ?? "";
 $browserId = 7; // default
@@ -57,6 +59,7 @@ $pageMap = [
     "/pages/admin/incidents.php" => 10,
     "/pages/admin/analytics.php" => 11,
     "/pages/admin/add_user.php" => 12,
+    "/pages/reporter/incident_form.php" => 13,
 ];
 
 $pageId = $pageMap[$page] ?? null;
@@ -68,5 +71,10 @@ if ($pageId !== null) {
     ");
     $stmt->bind_param("iis", $pageId, $browserId, $ip);
     $stmt->execute();
+
+    $visit_id = $mysqli->insert_id;
+    $new_stmt = $mysqli->prepare("INSERT INTO user_visit_log (visit_log_id, user_id) VALUES (?, ?)");
+    $new_stmt->bind_param("ii", $visit_id, $_SESSION["user_id"]);
+    $new_stmt->execute();
 }
 ?>
