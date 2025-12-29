@@ -1,7 +1,4 @@
-<?php 
-require_once "includes/session.php";
-require "../../includes/layout.php";
-?>
+<?php require_once "includes/session.php";?>
 
 <!DOCTYPE html>
 <html lang="en">
