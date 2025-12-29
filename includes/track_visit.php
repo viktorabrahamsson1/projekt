@@ -50,7 +50,7 @@ $pageMap = [
     "/index.php" => 1,
     "/incident/create.php" => 2,
     "/login.php" => 3,
-    "/dashboard.php" => 4,
+    "/main.php" => 4,
     "/account/settings.php" => 5,
     "/logout.php" => 6,
     "/reports/view.php" => 7,
@@ -60,6 +60,8 @@ $pageMap = [
     "/pages/admin/analytics.php" => 11,
     "/pages/admin/add_user.php" => 12,
     "/pages/reporter/incident_form.php" => 13,
+    "/pages/admin/userSummary.php" => 14,
+    "/pages/admin/pageStats.php" => 15,
 ];
 
 $pageId = $pageMap[$page] ?? null;
