@@ -14,8 +14,8 @@ if ($_SESSION["role"] === "admin") {
     SUM(role.role = 'Admin') AS admins,
     SUM(role.role = 'Responder') AS responders,
     SUM(role.role = 'Reporter') AS reporters
-FROM user
-JOIN role ON user.role_id = role.role_id;
+    FROM user
+    JOIN role ON user.role_id = role.rolee_id;
 ";
 
   try {
@@ -27,7 +27,7 @@ JOIN role ON user.role_id = role.role_id;
     $total_responders = (int) $result["responders"] ?? 0;
     $total_reporters = (int) $result["reporters"] ?? 0;
   } catch (mysqli_sql_exception $e) {
-    setAlert("Failed to fetch users", "error", "/main.php");
+    setAlert("Failed to fetch users", "error", "/pages/admin/allUsers.php");
   }
 
   $sql_critical_count = "SELECT SUM(incident.severity_id = 2) AS critical_count FROM incident;";
@@ -38,7 +38,7 @@ JOIN role ON user.role_id = role.role_id;
     $critical_count = (int) $result["critical_count"] ?? 0;
 
   } catch (mysqli_sql_exception $e) {
-    setAlert("Failed to fetch critical count", "error", "/main.php");
+    setAlert("Failed to fetch critical count", "error", "/pages/admin/allUsers.php");
   }
 
   $sql_incidents_today =
@@ -54,15 +54,15 @@ JOIN role ON user.role_id = role.role_id;
     $incidents_today_count = (int) $result["incidents_today"] ?? 0;
 
   } catch (mysqli_sql_exception $e) {
-    setAlert("Failed to fetch todays incident count", "error", "/main.php");
+    setAlert("Failed to fetch todays incident count", "error", "/pages/admin/allUsers.php");
   }
 
   $sql_open_incidents =
     "SELECT COUNT(*) AS open_incidents
-  FROM incident_status 
-  WHERE incident_status.status_id = 2
-  OR incident_status.status_id = 1;
-  ";
+    FROM incident_status 
+    WHERE incident_status.status_id = 2
+    OR incident_status.status_id = 1; ";
+
   try {
     $stmt = $mysqli->prepare($sql_open_incidents);
     $stmt->execute();
@@ -70,7 +70,7 @@ JOIN role ON user.role_id = role.role_id;
     $open_incidents_count = (int) $result["open_incidents"] ?? 0;
 
   } catch (mysqli_sql_exception $e) {
-    setAlert("Failed to fetch open incident count", "error", "/main.php");
+    setAlert("Failed to fetch open incident count", "error", "/pages/admin/allUsers.php");
   }
 
 
