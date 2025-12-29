@@ -40,11 +40,16 @@ INSERT INTO page_url (page_url_id, page_url) VALUES
 (5, '/account/settings.php'),
 (6, '/logout.php'),
 (7, '/reports/view.php'),
+-- ADMIN
 (8, '/pages/admin/visitLogs.php'),
 (9, '/pages/admin/allUsers.php'),
 (10, '/pages/admin/incidents.php'),
 (11, '/pages/admin/analytics.php'),
-(12, '/pages/admin/add_user.php');
+(12, '/pages/admin/add_user.php'),
+-- REPORTER
+(13, '/pages/reporter/incident_form.php')
+-- RESPONDER
+
 
 -- ===============================
 -- SEVERITY - INCIDENT TYPES - ASSETS
