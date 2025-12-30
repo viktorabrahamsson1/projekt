@@ -11,15 +11,19 @@ $sql = "
         v.host_ip,
         b.browser AS browser_name,
         v.timestamp,
-        p.page_url
+        p.page_url,
+        u.username
     FROM visit_log v
     LEFT JOIN browser b 
         ON v.browser_id = b.browser_id
     LEFT JOIN page_url p 
         ON v.page_url_id = p.page_url_id
+    LEFT JOIN user_visit_log uv
+        ON uv.visit_log_id = v.visit_log_id
+    LEFT JOIN user u
+        ON u.user_id = uv.user_id
     ORDER BY v.timestamp DESC
 ";
-
 
 $result = $mysqli->query($sql);
 
@@ -31,7 +35,11 @@ if (!$result) {
 $content = <<<HTML
 
 <section class="visitlogs_container">
-    
+
+    <a href="visitLogs.php">All Logs</a> |
+    <a href="userSummary.php">User Summary</a> |
+    <a href="pageStats.php">Page Stats</a>
+
     <div class="visitlogs_card">
 
         <div class="visitlogs_table_wrapper">
@@ -39,6 +47,7 @@ $content = <<<HTML
                 <thead>
                     <tr>
                         <th>Visit ID</th>
+                        <th>User</th>
                         <th>Host IP</th>
                         <th>Browser</th>
                         <th>Timestamp</th>
@@ -54,10 +63,12 @@ while ($row = $result->fetch_assoc()) {
 
     $browser = $row["browser_name"] ?? "Unknown";
     $pageUrl = $row["page_url"] ?? "Unknown";
+    $username = $row["username"] ?? "Guest";
 
     $content .= "
         <tr>
             <td>{$row["visit_log_id"]}</td>
+            <td>{$username}</td>
             <td>{$row["host_ip"]}</td>
             <td>{$browser}</td>
             <td>{$row["timestamp"]}</td>
@@ -70,7 +81,7 @@ while ($row = $result->fetch_assoc()) {
 if ($result->num_rows === 0) {
     $content .= '
         <tr class="placeholder_row">
-            <td colspan="5">No visit logs found.</td>
+            <td colspan="6">No visit logs found.</td>
         </tr>
     ';
 }

@@ -43,7 +43,7 @@ require_once "track_visit.php";
     if ($_SESSION["role"] === "reporter") {
       $buttons .= <<<HTML
         <div class="aside-button-container" id="reporter">
-          <p>Reporter</p>
+          <p>Incident Reporter</p>
             <button onclick="window.location.href='/main.php'">Dashboard</button>
           <button onclick="window.location.href='/pages/reporter/incident_form.php'">Report incident</button>
           <button>My incidents</button>
@@ -56,13 +56,10 @@ require_once "track_visit.php";
     if ($_SESSION["role"] === "responder") {
       $buttons .= <<<HTML
           <div class=" aside-button-container" id="responder">
-            <p>Responder</p>
+            <p>Incident Responder</p>
+            <button onclick="window.location.href='/main.php'">Dashboard</button>
             <button onclick="window.location.href='/pages/responder/pending_incidents.php'">Pending incidents</button>
             <button onclick="window.location.href='/pages/responder/assigned_incidents.php'">Assigned incidents</button>
-            <button onclick="window.location.href='/main.php'">Dashboard</button>
-            <button>All indcidents</button>
-            <button>Update status</button>
-            <button>Add comment</button>
           </div>
       HTML;
     }
@@ -71,9 +68,9 @@ require_once "track_visit.php";
     if ($_SESSION["role"] === "admin") {
       $buttons .= <<<HTML
         <div class="aside-button-container" id="admin">
-            <p>Admin</p>
-            <button onclick="window.location.href='/main.php'">Dashboard</button>
-            <button onclick="window.location.href='/pages/admin/incidents.php'">View incidents</button>
+          <p>System Administrator</p>
+          <button onclick="window.location.href='/main.php'">Dashboard</button>
+          <button onclick="window.location.href='/pages/admin/incidents.php'">View incidents</button>
           <button onclick="window.location.href='/pages/admin/allUsers.php'">All users</button>
           <button onclick="window.location.href='/pages/admin/analytics.php'">Analytics</button>
           <button onclick="window.location.href='/pages/admin/visitLogs.php'">Visit logs</button>

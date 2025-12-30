@@ -36,7 +36,7 @@ INSERT INTO page_url (page_url_id, page_url) VALUES
 (1, '/index.php'),
 (2, '/incident/create.php'),
 (3, '/login.php'),
-(4, '/dashboard.php'),
+(4, '/main.php'),
 (5, '/account/settings.php'),
 (6, '/logout.php'),
 (7, '/reports/view.php'),
