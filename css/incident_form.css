@@ -1,13 +1,15 @@
 .report_container {
-  width: 500px;
-  height: -webkit-fill-available;
+  width: 80%;
+  height: 95%;
   background-color: var(--primary-bg-color);
   border-radius: 4px;
-  top: 50%;
-  left: 50%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .form_container {

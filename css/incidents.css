@@ -1,10 +1,13 @@
 .incident_container {
-    background-color: var(--primary-bg-color);
-    width: 70%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: var(--primary-bg-color);
+  width: 80%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .headers {
@@ -15,30 +18,32 @@
 }
 
 #order_by {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .table_container {
-    width: 90%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
 }
 
 table {
-    border: 2px solid black;
-    width: 90%;
+  border: 2px solid black;
+  width: 90%;
 }
 
-table th, table td {
+table th,
+table td {
   text-align: center;
   vertical-align: middle;
 }
 
-th, td {
-    border: 2px solid black;
-    background-color: var(--primary-bt-color);
-    border-radius: 5px;
+th,
+td {
+  border: 2px solid black;
+  background-color: var(--primary-bt-color);
+  border-radius: 5px;
 }
