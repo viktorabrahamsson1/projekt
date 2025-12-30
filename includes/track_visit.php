@@ -54,12 +54,25 @@ $pageMap = [
     "/account/settings.php" => 5,
     "/logout.php" => 6,
     "/reports/view.php" => 7,
+
+    // ADMIN
     "/pages/admin/visitLogs.php" => 8,
     "/pages/admin/allUsers.php" => 9,
     "/pages/admin/incidents.php" => 10,
     "/pages/admin/analytics.php" => 11,
     "/pages/admin/add_user.php" => 12,
+
+    // REPORTER
     "/pages/reporter/incident_form.php" => 13,
+    "/pages/reporter/create_incident.php" => 14,
+    "/pages/reporter/my_incidents.php" => 15,
+    "/pages/reporter/add_evidence.php" => 16,
+
+    // RESPONDER
+    "/pages/responder/pending_incidents.php" => 17,
+    "/pages/responder/assigned_incidents.php" => 18,
+    "/pages/responder/update_status.php" => 19,
+    "/pages/responder/add_comment.php" => 20,
 ];
 
 $pageId = $pageMap[$page] ?? null;
@@ -77,4 +90,3 @@ if ($pageId !== null) {
     $new_stmt->bind_param("ii", $visit_id, $_SESSION["user_id"]);
     $new_stmt->execute();
 }
-?>

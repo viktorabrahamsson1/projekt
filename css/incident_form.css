@@ -70,3 +70,18 @@ form > button:hover {
   flex-direction: column;
   gap: 5px;
 }
+
+.asset_Pborder {
+  margin-top: 5px;
+  border-radius: 5px;
+  border: solid 2px;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: white;
+  color: black;
+  opacity: 1;
+  border-color: inherit;
+}

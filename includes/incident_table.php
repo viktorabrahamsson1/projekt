@@ -27,7 +27,9 @@
                         <td><?= $row->asset_count ?></td>
                         <td><?= $row->occurrence_datetime ?></td>
                         <td><?= $row->updated_at ?></td>
-                        <td><button onclick="window.location.href='../../includes/incident_details.php'">Details/Edit</button></td>
+                        <td><button onclick="window.location.href='/includes/incident_details.php?id=<?= $row->incident_id ?>'">
+                                Details
+                            </button></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>

@@ -12,7 +12,7 @@ INSERT INTO role (role) VALUES
 
 INSERT INTO user (role_id, first_name, last_name, username, email, password_hash)
 VALUES 
-(1, 'Admin', 'User', 'admin', 'admin@example.com',
+(1, 'Admin', 'User', 'administrator', 'admin@example.com',
 '$2y$12$x1tKvIviiwzX4nybv3/2I.0Wc64m4ayY.NYAzOMbADKVtSO3c0dnO'),
 (2, 'Responder', 'User', 'responder', 'responder@example.com',
 '$2y$12$fOcMvz4Tg/RONpswaQtacOFcJyMPVmhRqTWk9miPZhtsEHxlrtaHu'),
@@ -40,15 +40,25 @@ INSERT INTO page_url (page_url_id, page_url) VALUES
 (5, '/account/settings.php'),
 (6, '/logout.php'),
 (7, '/reports/view.php'),
+
 -- ADMIN
 (8, '/pages/admin/visitLogs.php'),
 (9, '/pages/admin/allUsers.php'),
 (10, '/pages/admin/incidents.php'),
 (11, '/pages/admin/analytics.php'),
 (12, '/pages/admin/add_user.php'),
+
 -- REPORTER
-(13, '/pages/reporter/incident_form.php');
+(13, '/pages/reporter/incident_form.php'),
+(14, '/pages/reporter/create_incident.php'),
+(15, '/pages/reporter/my_incidents.php'),
+(16, '/pages/reporter/add_evidence.php'),
+
 -- RESPONDER
+(17, '/pages/responder/pending_incidents.php'),
+(18, '/pages/responder/assigned_incidents.php'),
+(19, '/pages/responder/update_status.php'),
+(20, '/pages/responder/add_comment.php');
 
 
 -- ===============================
