@@ -46,8 +46,7 @@ require_once "track_visit.php";
           <p>Incident Reporter</p>
             <button onclick="window.location.href='/main.php'">Dashboard</button>
           <button onclick="window.location.href='/pages/reporter/incident_form.php'">Report incident</button>
-          <button>My incidents</button>
-          <button>Add evidence</button>
+          <button onclick="window.location.href='/pages/reporter/my_incidents.php'">My incidents</button>
         </div>
       HTML;
     }

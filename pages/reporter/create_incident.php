@@ -15,6 +15,9 @@ if (
     setAlert("All fields besides photo evidence needs to be filled", "error", "incident_form.php");
 }
 
+$reported_by = $_SESSION["user_id"];
+echo $reported_by;
+
 $severity_id = intval($_POST["severity"]);
 $incident_type_id = intval($_POST["incident_type"]);
 $selectedAssets = array_map('intval', $_POST["assets"]);
@@ -25,8 +28,8 @@ $occurrence_datetime = date(
 );
 
 $insertIncident = "
-    INSERT INTO incident (severity_id, incident_type_id, description, occurrence_datetime)
-    VALUES ($severity_id, $incident_type_id, '$description', '$occurrence_datetime')
+    INSERT INTO incident (severity_id, incident_type_id, reported_by, description, occurrence_datetime)
+    VALUES ($severity_id, $incident_type_id, $reported_by, '$description', '$occurrence_datetime')
 ";
 
 $mysqli->query($insertIncident);
@@ -85,5 +88,16 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
     }
 }
 
-setAlert("Incident was successfully created", "success", "incident_form.php");
+$insert_status = "
+INSERT INTO incident_status (user_id, incident_id, status_id)
+VALUES ($reported_by, $incident_id, 1)
+";
+
+$mysqli->query($insert_status);
+
+if ($mysqli->error) {
+    die("Error inserting incident: " . $mysqli->error);
+}
+
+setAlert("Incident was successfully created by $reported_by", "success", "incident_form.php");
 exit;

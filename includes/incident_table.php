@@ -29,7 +29,8 @@
                         <td><?= $row->updated_at ?></td>
                         <td><button onclick="window.location.href='/includes/incident_details.php?id=<?= $row->incident_id ?>'">
                                 Details
-                            </button></td>
+                            </button>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>

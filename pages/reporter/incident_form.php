@@ -37,6 +37,7 @@ $content = <<<HTML
         <h1 id="incident_form_header">Incident Report Form</h1>
         <div class="form_container">
             <form action="create_incident.php" method="POST" enctype="multipart/form-data">
+
                 <label for="severity">Severity</label>
                 <select name="severity" id="severity" required>
                     <option value="">Choose Severity-level</option>
