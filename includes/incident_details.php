@@ -65,6 +65,33 @@ $canEdit   = in_array($role, ['admin', 'responder'], true);
 $canDelete = ($role === 'admin');
 $disabled  = $canEdit ? '' : 'disabled';
 
+$severityOptions = "";
+$severity_query = "SELECT severity_id, severity FROM severity";
+$severity = $mysqli->query($severity_query);
+
+while ($row = $severity->fetch_object()) {
+    $severityOptions .= "<option value=\"{$row->severity_id}\">{$row->severity}</option>";
+}
+
+$typeOptions = "";
+$type_query = "SELECT incident_type_id, incident_type FROM incident_type";
+$type = $mysqli->query($type_query);
+
+while ($row = $type->fetch_object()) {
+    $typeOptions .= "<option value=\"{$row->incident_type_id}\">{$row->incident_type}</option>";
+}
+
+$assetOptions = "";
+$asset_query = "SELECT asset_id, asset FROM asset";
+$asset = $mysqli->query($asset_query);
+
+while ($row = $asset->fetch_object()) {
+    $assetOptions .= "<div>
+    <input id=\"{$row->asset_id}\" type=\"checkbox\" name=\"assets[]\" value=\"{$row->asset_id}\"> 
+    <label for=\"{$row->asset_id}\">{$row->asset}</label>
+</div>";
+}
+
 $content = <<<HTML
 <div class="report_container">
 
@@ -75,23 +102,33 @@ $content = <<<HTML
 
             <input type="hidden" name="incident_id" value="{$incidentId}">
 
-            <label>Severity</label>
-            <input type="text" name="severity" value="{$severity}" {$disabled}>
+            <label for="severity">Severity</label>
+                <select name="severity" id="severity" required>
+                    <option value="">Choose Severity-level</option>
+                    $severityOptions
+                </select>
 
-            <label>Incident Type</label>
-            <input type="text" name="incident_type" value="{$incidentType}" {$disabled}>
+                <label for="incident_type">Incident Type</label>
+                <select name="incident_type" id="incident_type" required>
+                    <option value="">Choose Incident-Type</option>
+                    $typeOptions
+                </select>
 
-            <label>Affected assets</label>
-            <input type="text" name="assets" value="{$assets}" {$disabled}>
+                <div id="asset_container">
+                    <label for="asset_container">Choose affected assets</label>
+                    $assetOptions
+                </div>
 
-            <label>Date of occurrence</label>
-            <input type="datetime-local"
-                   name="occurrence_datetime"
-                   value="{$occurrenceValue}"
-                   {$disabled}>
+                <label for="image">Upload image of incident</label>
+                <input type="file" id="image" name="image" accept="image/*">
 
-            <label>Description</label>
-            <textarea name="description" rows="5" {$disabled}>{$description}</textarea>
+                <label for="occurrence_datetime">Set date of occurence</label>
+                <input type="datetime-local" id="occurrence_datetime" name="occurrence_datetime">
+
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="5" cols="40"
+                    placeholder="Write your description here">
+                </textarea>
 
             <label>Status</label>
             <input type="text" name="status" value="{$status}" {$disabled}>
@@ -123,5 +160,22 @@ if ($canDelete) {
         </form>
 HTML;
 }
+
+$content .= <<<HTML
+<script src="../js/Fill-IncidentDetails.js"></script>
+<script>
+    const incidentData =
+HTML;
+
+$content .= json_encode(
+    $incident,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+);
+
+$content .= <<<HTML
+;
+    fillIncidentDetails(incidentData);
+</script>
+HTML;
 
 require_once "layout.php";

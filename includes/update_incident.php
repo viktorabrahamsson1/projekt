@@ -28,8 +28,14 @@ foreach ($required as $field) {
 }
 
 $incidentId = (int) $_POST['incident_id'];
+$severityId = (int) $_POST['severity'];
+$typeId     = (int) $_POST['incident_type'];
 
 $mysqli->begin_transaction();
+
+/* echo '<pre>';
+var_dump($_POST);
+exit; */
 
 try {
     $stmt = $mysqli->prepare(
@@ -46,24 +52,10 @@ try {
     $stmt->execute();
 
     $stmt = $mysqli->prepare(
-        "SELECT severity_id FROM severity WHERE severity = ?"
-    );
-    $stmt->bind_param("s", $_POST['severity']);
-    $stmt->execute();
-    $severityId = $stmt->get_result()->fetch_assoc()['severity_id'];
-
-    $stmt = $mysqli->prepare(
         "UPDATE incident SET severity_id = ? WHERE incident_id = ?"
     );
     $stmt->bind_param("ii", $severityId, $incidentId);
     $stmt->execute();
-
-    $stmt = $mysqli->prepare(
-        "SELECT incident_type_id FROM incident_type WHERE incident_type = ?"
-    );
-    $stmt->bind_param("s", $_POST['incident_type']);
-    $stmt->execute();
-    $typeId = $stmt->get_result()->fetch_assoc()['incident_type_id'];
 
     $stmt = $mysqli->prepare(
         "UPDATE incident SET incident_type_id = ? WHERE incident_id = ?"
@@ -77,20 +69,21 @@ try {
     $stmt->bind_param("i", $incidentId);
     $stmt->execute();
 
-    $assets = array_map('trim', explode(',', $_POST['assets']));
+    $stmt = $mysqli->prepare(
+        "DELETE FROM incident_asset WHERE incident_id = ?"
+    );
+    $stmt->bind_param("i", $incidentId);
+    $stmt->execute();
 
-    foreach ($assets as $asset) {
-        $stmt = $mysqli->prepare(
-            "SELECT asset_id FROM asset WHERE asset = ?"
-        );
-        $stmt->bind_param("s", $asset);
-        $stmt->execute();
-        $assetId = $stmt->get_result()->fetch_assoc()['asset_id'];
+    $assets = $_POST['assets'];
 
-        $stmt = $mysqli->prepare(
-            "INSERT INTO incident_asset (incident_id, asset_id)
-             VALUES (?, ?)"
-        );
+    $stmt = $mysqli->prepare(
+        "INSERT INTO incident_asset (incident_id, asset_id)
+     VALUES (?, ?)"
+    );
+
+    foreach ($assets as $assetId) {
+        $assetId = (int) $assetId;
         $stmt->bind_param("ii", $incidentId, $assetId);
         $stmt->execute();
     }
