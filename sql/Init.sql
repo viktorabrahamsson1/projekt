@@ -81,11 +81,13 @@ CREATE TABLE incident (
     incident_id INT AUTO_INCREMENT PRIMARY KEY,
     severity_id INT NOT NULL,
     incident_type_id INT NOT NULL,
+    reported_by INT NOT NULL,
     description TEXT,
     occurrence_datetime DATETIME NOT NULL,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (severity_id) REFERENCES severity(severity_id),
-    FOREIGN KEY (incident_type_id) REFERENCES incident_type(incident_type_id)
+    FOREIGN KEY (incident_type_id) REFERENCES incident_type(incident_type_id),
+    FOREIGN KEY (reported_by) REFERENCES user(user_id)
 );
 
 CREATE TABLE incident_asset (

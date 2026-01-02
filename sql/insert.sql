@@ -13,7 +13,7 @@ INSERT INTO role (role) VALUES
 INSERT INTO user (role_id, first_name, last_name, username, email, password_hash)
 VALUES 
 (1, 'Admin', 'User', 'administrator', 'admin@example.com',
-'$2y$12$x1tKvIviiwzX4nybv3/2I.0Wc64m4ayY.NYAzOMbADKVtSO3c0dnO'),
+'$2y$10$ErpMoCCpbYLhm78ckiGNQ.m55.ldIgqmPhO2xjsAhbjK8NOap76EO'),
 (2, 'Responder', 'User', 'responder', 'responder@example.com',
 '$2y$12$fOcMvz4Tg/RONpswaQtacOFcJyMPVmhRqTWk9miPZhtsEHxlrtaHu'),
 (3, 'Reporter', 'User', 'reporter', 'reporter@example.com',
@@ -91,14 +91,11 @@ INSERT INTO asset (asset) VALUES
 -- INCIDENT
 -- ===============================
 
-INSERT INTO incident (severity_id, incident_type_id, description, occurrence_datetime)
+INSERT INTO incident (severity_id, incident_type_id, reported_by, description, occurrence_datetime)
 VALUES 
-(2, 1, 'User reported suspicious login attempts', NOW()),
-(3, 2, 'Major DDoS attack detected', NOW()),
-(1, 3, 'Malware detected on workstation', NOW()),
-(4, 4, 'SQL injection attempt detected', NOW()),
-(2, 5, 'High number of failed login attempts', NOW()),
-(3, 6, 'Privilege escalation attempt logged', NOW());
+(2, 1, 1, 'User reported suspicious login attempts', NOW()),
+(3, 2, 1, 'Major DDoS attack detected', NOW()),
+(1, 3, 1, 'Malware detected on workstation', NOW());
 
 -- ===============================
 -- INCIDENT_ASSET
@@ -109,11 +106,10 @@ VALUES
 (1, 1),
 (2, 2),
 (6, 2),
-(4, 3),
-(2, 5),
+(4, 2),
 (6, 3),
-(5, 6),
-(3, 6);
+(5, 3),
+(3, 3);
 
 -- ===============================
 -- INCIDENT_COMMENT
@@ -123,10 +119,7 @@ INSERT INTO incident_comment (incident_id, comment)
 VALUES 
 (1, 'Initial investigation started'),
 (2, 'Traffic filtering applied'),
-(3, 'Malware quarantined'),
-(4, 'Firewall updated'),
-(5, 'Password reset enforced'),
-(6, 'Admin notified of escalation attempt');
+(3, 'Malware quarantined');
 
 -- ===============================
 -- INCIDENT_EVIDENCE
@@ -136,10 +129,7 @@ INSERT INTO incident_evidence (incident_id, file_path, file_name)
 VALUES 
 (1, '/logs', 'login_attempts.txt'),
 (2, '/logs/ddos', 'traffic_dump.pcap'),
-(3, '/malware', 'infected_file.exe'),
-(4, '/sql', 'payload.txt'),
-(5, '/auth', 'failed_logins.csv'),
-(6, '/priv', 'escalation_trace.log');
+(3, '/malware', 'infected_file.exe');
 
 -- ===============================
 -- STATUS
@@ -156,12 +146,7 @@ INSERT INTO status (status) VALUES
 
 INSERT INTO incident_status (user_id, incident_id, status_id)
 VALUES
-(2, 1, 2),
 (1, 1, 1),
-(3, 2, 1),
-(2, 2, 2),
-(1, 3, 1),
-(3, 3, 2),
-(2, 4, 2),
-(1, 5, 1),
-(3, 6, 2);
+(1, 2, 1),
+(1, 3, 1);
+
