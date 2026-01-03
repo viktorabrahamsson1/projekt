@@ -27,7 +27,6 @@ $sql = "
 $incident = $mysqli->query($sql);
 
 ob_start();
-echo $userId;
 include "../../includes/incident_table.php";
 $content = ob_get_clean();
 

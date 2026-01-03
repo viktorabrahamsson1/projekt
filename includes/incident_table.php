@@ -1,3 +1,14 @@
+<?php
+require_once "session.php";
+require_once "db.php";
+
+$role = $_SESSION['role'];
+$hide_control = "hidden";
+if (($role === "responder")) {
+    $hide_control = "";
+}
+?>
+
 <div class="incident_container">
     <div class="headers">
         <h1>Incidents</h1>
@@ -15,6 +26,7 @@
                     <th>Occurrence</th>
                     <th>Updated at</th>
                     <th>Details/Edit</th>
+                    <th <?php echo $hide_control ?>>Assign</th>
                 </tr>
             </thead>
 
@@ -30,6 +42,12 @@
                         <td><button onclick="window.location.href='/includes/incident_details.php?id=<?= $row->incident_id ?>'">
                                 Details
                             </button>
+                        </td>
+                        <td <?php echo $hide_control ?>>
+                            <form method="POST" action="/includes/assign_incident.php" style="margin:0;">
+                                <input type="hidden" name="incident_id" value="<?= $row->incident_id ?>">
+                                <button type="submit">Assign</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endwhile; ?>
