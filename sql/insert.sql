@@ -58,7 +58,9 @@ INSERT INTO page_url (page_url_id, page_url) VALUES
 (17, '/pages/responder/pending_incidents.php'),
 (18, '/pages/responder/assigned_incidents.php'),
 (19, '/pages/responder/update_status.php'),
-(20, '/pages/responder/add_comment.php');
+(20, '/pages/responder/add_comment.php'),
+(21, '/pages/admin/userSummary.php'),
+(22, '/pages/admin/pageStats.php');
 
 
 -- ===============================
