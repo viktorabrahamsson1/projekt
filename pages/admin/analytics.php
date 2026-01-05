@@ -63,9 +63,6 @@ ob_start();
 <link rel="stylesheet" href="../../css/analytics.css">
 
 <section class="analytics-wrapper">
-
-    <h2 class="analytics-title">Incident Analytics Dashboard</h2>
-
     <!-- Toggle Button -->
     <button id="toggleViewBtn" class="toggle-btn">Show Tables</button>
 

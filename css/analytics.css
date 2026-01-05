@@ -37,10 +37,9 @@
 
 .analytic-card canvas {
     width: 100% !important;
-    max-height: 180px !important; /* smaller so all fits on screen */
+    max-height: 250px !important;
 }
 
-/* TABLE section */
 .hidden {
     display: none;
 }
