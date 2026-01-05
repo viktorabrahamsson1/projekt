@@ -18,6 +18,7 @@ require_once "track_visit.php";
   <link rel="stylesheet" href="/css/add_user.css">
   <link rel="stylesheet" href="/css/visitLogs.css">
   <link rel="stylesheet" href="/css/error.css">
+  <link rel="stylesheet" href="/css/analytics.css">
 
 
   <title>main</title>

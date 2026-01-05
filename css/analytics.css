@@ -1,0 +1,85 @@
+.analytics-wrapper {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.analytics-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* FORCE a 2×2 grid — no more awkward long empty bottom */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 5px;
+}
+
+.analytic-card {
+    background: #faf3dd;
+    padding: 15px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    text-align: center;
+    min-height: 270px; /* balance cards */
+}
+
+.analytic-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.analytic-card canvas {
+    width: 100% !important;
+    max-height: 180px !important; /* smaller so all fits on screen */
+}
+
+/* TABLE section */
+.hidden {
+    display: none;
+}
+
+.toggle-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.toggle-btn:hover {
+    background: #555;
+}
+
+.mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mini-table th {
+    background: #f2f2f2;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.mini-table td {
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+}
+
+.mini-table tr:last-child td {
+    border-bottom: none;
+}
