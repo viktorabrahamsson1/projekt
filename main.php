@@ -30,7 +30,7 @@ if ($_SESSION["role"] === "admin") {
     setAlert("Failed to fetch users", "error", "/pages/admin/allUsers.php");
   }
 
-  $sql_critical_count = "SELECT SUM(incident.severity_id = 2) AS critical_count FROM incident;";
+  $sql_critical_count = "SELECT SUM(incident.severity_id = 4) AS critical_count FROM incident;";
   try {
     $stmt = $mysqli->prepare($sql_critical_count);
     $stmt->execute();
