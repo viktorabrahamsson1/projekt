@@ -46,8 +46,12 @@ function fillIncidentDetails(incident) {
         });
     }
 
-    const statusEl = document.querySelector('input[name="status"]');
-    if (statusEl && incident.status !== null) {
-        statusEl.value = incident.status;
+    const statusEl = document.getElementById("status");
+    if (statusEl && incident.status) {
+        [...statusEl.options].forEach(option => {
+            if (option.text === incident.status) {
+                option.selected = true;
+            }
+        });
     }
 }

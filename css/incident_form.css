@@ -1,6 +1,6 @@
 .report_container {
   width: 80%;
-  height: 95%;
+  height: 97%;
   background-color: var(--primary-bg-color);
   border-radius: 4px;
 
@@ -86,4 +86,18 @@ select:disabled {
   color: black;
   opacity: 1;
   border-color: inherit;
+}
+
+.comments {
+  display: flex;
+  margin-top: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment {
+  width: 80%;
+  padding: 10px;
+  border: 1px black;
+  border-radius: 5px;
 }

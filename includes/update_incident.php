@@ -2,6 +2,7 @@
 
 require_once "redirect_by_role.php";
 require_once "db.php";
+require_once "alert.php";
 
 if (!in_array($_SESSION['role'] ?? '', ['admin', 'responder'], true)) {
     http_response_code(403);

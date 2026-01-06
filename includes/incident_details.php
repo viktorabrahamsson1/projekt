@@ -18,10 +18,18 @@ SELECT
     it.incident_type,
     GROUP_CONCAT(DISTINCT ass.asset ORDER BY ass.asset SEPARATOR ', ') AS assets,
     i.updated_at,
-    stat.status
+    stat.status,
+    GROUP_CONCAT(
+        ic.comment
+        ORDER BY ic.timestamp
+        SEPARATOR ' | '
+    ) AS comments
 FROM incident i
 JOIN severity s ON i.severity_id = s.severity_id
 JOIN incident_type it ON i.incident_type_id = it.incident_type_id
+
+LEFT JOIN incident_comment ic 
+    ON i.incident_id = ic.incident_id
 
 LEFT JOIN incident_asset ia ON i.incident_id = ia.incident_id
 LEFT JOIN asset ass ON ia.asset_id = ass.asset_id
@@ -92,6 +100,30 @@ while ($row = $asset->fetch_object()) {
 </div>";
 }
 
+$comments = "";
+$incident_comment_query = "
+    SELECT incident_comment_id, comment, timestamp
+    FROM incident_comment
+    WHERE incident_id = $incidentId
+    ORDER BY timestamp ASC
+";
+$incident_comment = $mysqli->query($incident_comment_query);
+
+while ($row = $incident_comment->fetch_object()) {
+    $comments .= "
+        <input  class=comment id=\"{$row->incident_comment_id}\" type=text value=\"{$row->comment} - {$row->timestamp}\" {$disabled}>
+        <p></p>";
+}
+
+$statusOptions = "";
+$status_query = "SELECT status_id, status FROM status";
+$status = $mysqli->query($status_query);
+
+while ($row = $status->fetch_object()) {
+    $statusOptions .= "<option value=\"{$row->status_id}\">{$row->status}</option>";
+}
+
+
 $content = <<<HTML
 <div class="report_container">
 
@@ -130,8 +162,22 @@ $content = <<<HTML
                     placeholder="Write your description here">
                 </textarea>
 
-            <label>Status</label>
-            <input type="text" name="status" value="{$status}" {$disabled}>
+                <div class="comments">
+                    <label for="Comments">Comments</label>
+                    <p></p>
+                    $comments
+                    <form action="add_comment.php" method="post">
+                        <input type="hidden" name="incident_id" value="{$incidentId}">
+                        <input type="text" name="comment">
+                        <button type="submit" name="add_comment">Add comment</button>
+                    </form>
+                </div>
+
+                <label for="status">Status</label>
+                <select name="status" id="status" required>
+                    <option value="">Choose status-level</option>
+                    $statusOptions
+                </select>
 HTML;
 
 if ($canEdit) {
