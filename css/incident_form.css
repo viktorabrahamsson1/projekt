@@ -101,3 +101,15 @@ select:disabled {
   border: 1px black;
   border-radius: 5px;
 }
+
+.comment_button {
+  background-color: var(--primary-bt-color);
+  color: black;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.comment_button:hover {
+  border-radius: 5px;
+  cursor: pointer;
+}

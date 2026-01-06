@@ -162,15 +162,13 @@ $content = <<<HTML
                     placeholder="Write your description here">
                 </textarea>
 
+                <p></p>
+
                 <div class="comments">
                     <label for="Comments">Comments</label>
                     <p></p>
                     $comments
-                    <form action="add_comment.php" method="post">
-                        <input type="hidden" name="incident_id" value="{$incidentId}">
-                        <input type="text" name="comment">
-                        <button type="submit" name="add_comment">Add comment</button>
-                    </form>
+                    <div class="comment_button" onclick="openCommentModal($incidentId)">Add comment</div>
                 </div>
 
                 <label for="status">Status</label>
@@ -224,4 +222,30 @@ $content .= <<<HTML
 </script>
 HTML;
 
+$content .= <<<HTML
+</div>
+</div>
+<div id="commentModal" hidden>
+    <div class="modal_backdrop">
+        <div class="modal_content">
+            <h3>Add comment</h3>
+
+            <textarea id="commentText" placeholder="Write your comment..."></textarea>
+
+            <div class="modal_actions">
+                <div class="modal_btn" onclick="submitComment()">Submit</div>
+                <div class="modal_btn cancel" onclick="closeCommentModal()">Cancel</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="commentForm" action="add_comment.php" method="POST">
+    <input type="hidden" name="incident_id" id="incident_id">
+    <input type="hidden" name="comment" id="comment">
+    <input type="hidden" name="add_comment" value="1">
+</form>
+
+<script src="../js/add_comment.js"></script>
+HTML;
 require_once "layout.php";
