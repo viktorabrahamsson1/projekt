@@ -120,7 +120,7 @@ $status_query = "SELECT status_id, status FROM status";
 $status = $mysqli->query($status_query);
 
 while ($row = $status->fetch_object()) {
-    $statusOptions .= "<option value=\"{$row->status_id}\">{$row->status}</option>";
+    $statusOptions .= "<option value=\"{$row->status}\">{$row->status}</option>";
 }
 
 
@@ -206,23 +206,6 @@ HTML;
 }
 
 $content .= <<<HTML
-<script src="../js/Fill-IncidentDetails.js"></script>
-<script>
-    const incidentData =
-HTML;
-
-$content .= json_encode(
-    $incident,
-    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
-);
-
-$content .= <<<HTML
-;
-    fillIncidentDetails(incidentData);
-</script>
-HTML;
-
-$content .= <<<HTML
 </div>
 </div>
 <div id="commentModal" hidden>
@@ -247,5 +230,22 @@ $content .= <<<HTML
 </form>
 
 <script src="../js/add_comment.js"></script>
+HTML;
+
+$content .= <<<HTML
+<script src="../js/Fill-IncidentDetails.js"></script>
+<script>
+    const incidentData =
+HTML;
+
+$content .= json_encode(
+    $incident,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+);
+
+$content .= <<<HTML
+;
+    fillIncidentDetails(incidentData);
+</script>
 HTML;
 require_once "layout.php";
