@@ -16,7 +16,6 @@ if (
 }
 
 $reported_by = $_SESSION["user_id"];
-echo $reported_by;
 
 $severity_id = intval($_POST["severity"]);
 $incident_type_id = intval($_POST["incident_type"]);
@@ -72,14 +71,14 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
         mkdir($uploadDir, 0777, true);
     }
 
-    $filename = time() . "_" . basename($_FILES["image"]["name"]);
+    $filename = basename($_FILES["image"]["name"]);
     $targetPath = $uploadDir . $filename;
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetPath)) {
 
         $insertImage = "
             INSERT INTO incident_evidence (incident_id, file_path, file_name)
-            VALUES ($incident_id, '$uploadDir', '$filename')
+            VALUES ($incident_id, 'images/$filename', '$filename')
         ";
 
         $mysqli->query($insertImage);

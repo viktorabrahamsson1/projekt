@@ -35,7 +35,7 @@ $typeId     = (int) $_POST['incident_type'];
 $mysqli->begin_transaction();
 
 /* echo '<pre>';
-var_dump($_POST);
+var_dump($_FILES['image']);
 exit; */
 
 try {
@@ -104,10 +104,32 @@ try {
     $stmt->bind_param("ii", $statusId, $incidentId);
     $stmt->execute();
 
+    if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
+
+        $uploadDir = "images/";
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $filename = basename($_FILES["image"]["name"]);
+        $targetPath = $uploadDir . $filename;
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetPath)) {
+            $stmt = $mysqli->prepare(
+                "INSERT INTO incident_evidence (incident_id, file_path, file_name)
+                 VALUES (?, ?, ?)"
+            );
+            $stmt->bind_param("iss", $incidentId, $targetPath, $filename);
+            $stmt->execute();
+        } else {
+            redirectBackByRole("Image could not be uploaded" . $_FILES['image'], "error");
+        }
+    }
+
     $mysqli->commit();
 } catch (Throwable $e) {
     $mysqli->rollback();
-    redirectBackByRole("Failed to update incident.", "error");
+    redirectBackByRole("Failed to update incident." . $e, "error");
 }
 
 redirectBackByRole("Successfully updated incident", "success");

@@ -106,10 +106,41 @@ select:disabled {
   background-color: var(--primary-bt-color);
   color: black;
   padding: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .comment_button:hover {
-  border-radius: 5px;
   cursor: pointer;
+  background-color: var(--primary-bt-hover-color);
+}
+
+#evidence_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.evidence-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image_container {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.image_label {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #fff;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

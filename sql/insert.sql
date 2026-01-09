@@ -129,9 +129,9 @@ VALUES
 
 INSERT INTO incident_evidence (incident_id, file_path, file_name)
 VALUES 
-(1, '/logs', 'login_attempts.txt'),
-(2, '/logs/ddos', 'traffic_dump.pcap'),
-(3, '/malware', 'infected_file.exe');
+(1, 'images/test.jpg', 'test.jpg'),
+(2, 'images/test.jpg', 'test.jpg'),
+(3, 'images/test.jpg', 'test.jpg');
 
 -- ===============================
 -- STATUS

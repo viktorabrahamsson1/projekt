@@ -100,6 +100,19 @@ while ($row = $asset->fetch_object()) {
 </div>";
 }
 
+$images = "";
+$image_query = "SELECT incident_evidence_id, incident_id, file_path, file_name FROM incident_evidence
+                WHERE incident_id = $incidentId";
+$image = $mysqli->query($image_query);
+
+while ($row = $image->fetch_object()) {
+    $images .= "
+    <div class=evidene_item>
+        <img class=image_container id=\"{$row->incident_evidence_id}\" src=\"{$row->file_path}\" alt=placeholder></img>
+        <h4 class=image_label>{$row->file_name}</h4>
+    </div>";
+}
+
 $comments = "";
 $incident_comment_query = "
     SELECT incident_comment_id, comment, timestamp
@@ -130,7 +143,7 @@ $content = <<<HTML
     <h1 id="incident_form_header">Incident {$incidentId}</h1>
 
     <div class="form_container">
-        <form method="post" action="/includes/update_incident.php">
+        <form method="post" action="/includes/update_incident.php" enctype="multipart/form-data">
 
             <input type="hidden" name="incident_id" value="{$incidentId}">
 
@@ -149,6 +162,11 @@ $content = <<<HTML
                 <div id="asset_container">
                     <label for="asset_container">Choose affected assets</label>
                     $assetOptions
+                </div>
+
+                <label for="evidence_container">Evidence</label>
+                <div id="evidence_container">
+                    $images
                 </div>
 
                 <label for="image">Upload image of incident</label>
