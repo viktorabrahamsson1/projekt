@@ -4,7 +4,7 @@ require_once "../../auth/auth.php";
 requireRoles(["admin"]);
 require_once "../../includes/db.php";
 
-// ------------ Fetch Data ------------
+// Fetch All Data
 
 // Severity
 $q_severity = "
@@ -41,7 +41,7 @@ $q_daily = "
     ORDER BY day ASC";
 $dailyData = $mysqli->query($q_daily);
 
-// Convert MySQL results → arrays for JavaScript
+// Convert MySQL results to arrays for JavaScript
 function resultToArray($result) {
     $labels = [];
     $values = [];
@@ -66,7 +66,7 @@ ob_start();
     <!-- Toggle Button -->
     <button id="toggleViewBtn" class="toggle-btn">Show Tables</button>
 
-    <!-- CHART VIEW -->
+    <!-- Chart view -->
     <div id="chartsView" class="analytics-grid">
 
         <div class="analytic-card">
@@ -91,7 +91,7 @@ ob_start();
 
     </div>
 
-    <!-- TABLE VIEW -->
+    <!-- Table view -->
     <div id="tablesView" class="analytics-grid hidden">
 
         <div class="analytic-card">

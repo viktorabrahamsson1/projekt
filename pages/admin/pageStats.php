@@ -15,6 +15,7 @@ $sql = "
 
 $result = $mysqli->query($sql);
 
+// Build page content
 $content = <<<HTML
 <section class="visitlogs_container">
 
@@ -37,6 +38,7 @@ $content = <<<HTML
                 <tbody>
 HTML;
 
+// Loop to add table rows
 while ($row = $result->fetch_assoc()) {
     $content .= "
         <tr>

@@ -48,7 +48,6 @@ $content .= "</select></form><br>";
 
 if ($selectedUser && $userLogs->num_rows > 0) {
 
-    // ⭐⭐ WRAP TABLE IN SCROLLABLE DIV ⭐⭐
     $content .= "
     <div class='visitlogs_table_wrapper'>
         <table class='visitlogs_table'>
