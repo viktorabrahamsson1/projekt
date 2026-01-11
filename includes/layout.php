@@ -45,7 +45,6 @@ require_once "track_visit.php";
       $buttons .= <<<HTML
         <div class="aside-button-container" id="reporter">
           <p>Incident Reporter</p>
-            <button onclick="window.location.href='/main.php'">Dashboard</button>
           <button onclick="window.location.href='/pages/reporter/incident_form.php'">Report incident</button>
           <button onclick="window.location.href='/pages/reporter/my_incidents.php'">My incidents</button>
         </div>
@@ -57,7 +56,6 @@ require_once "track_visit.php";
       $buttons .= <<<HTML
           <div class=" aside-button-container" id="responder">
             <p>Incident Responder</p>
-            <button onclick="window.location.href='/main.php'">Dashboard</button>
             <button onclick="window.location.href='/pages/responder/pending_incidents.php'">Pending incidents</button>
             <button onclick="window.location.href='/pages/responder/assigned_incidents.php'">Assigned incidents</button>
           </div>

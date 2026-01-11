@@ -158,9 +158,9 @@ LIMIT 5; ";
 </div>
 ";
 } else if ($_SESSION["role"] === "responder") {
-  $content .= "RESPONDER";
+  $content .= "";
 } else if ($_SESSION["role"] === "reporter") {
-  $content .= "REPORTER";
+  $content .= "";
 }
 
 require_once "./includes/layout.php";
